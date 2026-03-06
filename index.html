@@ -1,164 +1,150 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cong Wan</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Georgia', serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #333;
-      background: #fff;
-    }
-    a { color: #1772d0; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 99;
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-      display: flex; align-items: center;
-      padding: 12px 40px;
-      gap: 28px;
-    }
-    .nav-name {
-      font-family: Arial, sans-serif;
-      font-weight: bold; font-size: 1.05em;
-      color: #222; flex: 1;
-    }
-    nav a {
-      font-family: Arial, sans-serif;
-      font-size: 0.9em; color: #1772d0;
-    }
-
-    /* ── WRAPPER ── */
-    .wrap {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 36px 40px 60px;
-    }
-
-    /* ── PROFILE ── */
-    .profile {
-      display: flex; gap: 40px;
-      align-items: flex-start;
-      margin-bottom: 40px;
-    }
-    .profile-card h1 {
-      font-family: Arial, sans-serif;
-      font-size: 1.85em; font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .profile-card p {
-      font-family: Arial, sans-serif;
-      font-size: 0.9em; color: #555;
-      line-height: 1.7;
-    }
-    .profile-card .cv-link {
-      display: inline-block;
-      margin-top: 8px;
-      font-family: Arial, sans-serif;
-      font-size: 0.88em;
-      border: 1px solid #1772d0;
-      padding: 2px 10px; border-radius: 3px;
-    }
-    .bio { flex: 1; }
-    .bio p { margin-bottom: 10px; font-size: 0.96em; }
-
-    /* ── SECTION TITLES ── */
-    h2 {
-      font-family: Arial, sans-serif;
-      font-size: 1.3em;
-      border-bottom: 2px solid #444;
-      padding-bottom: 5px;
-      margin: 40px 0 18px;
-    }
-
-    /* ── PAPERS ── */
-    .repr-note {
-      font-family: Arial, sans-serif;
-      font-size: 0.88em; color: #666;
-      margin-bottom: 18px;
-    }
-    .paper { margin-bottom: 22px; }
-    .paper.hl {
-      background: #fffef2;
-      border-left: 4px solid #f0a500;
-      padding: 10px 14px;
-      margin-left: -14px;
-    }
-    .ptitle { font-weight: bold; display: block; margin-bottom: 2px; }
-    .pauthors { font-size: 0.93em; color: #444; display: block; margin-bottom: 2px; }
-    .pvenue  { font-size: 0.93em; display: block; margin-bottom: 4px; }
-    .pvenue em { font-style: italic; }
-    .pnote { font-size: 0.88em; color: #b00; font-weight: bold; }
-    .plinks { font-family: Arial, sans-serif; font-size: 0.88em; }
-    .plinks a { margin-right: 4px; }
-    .me { font-weight: bold; text-decoration: underline; }
-
-    /* ── INTERNSHIPS ── */
-    .intern { margin-bottom: 22px; }
-    .intern-row {
-      display: flex; justify-content: space-between;
-      align-items: baseline; flex-wrap: wrap; gap: 4px;
-    }
-    .intern-place { font-weight: bold; font-size: 1em; }
-    .intern-date {
-      font-family: Arial, sans-serif;
-      font-size: 0.88em; color: #555; white-space: nowrap;
-    }
-    .intern-role {
-      font-style: italic; font-size: 0.93em; color: #444;
-      margin-top: 2px;
-    }
-    .intern-topic { font-size: 0.93em; color: #444; margin-top: 3px; }
-
-    /* ── HONORS ── */
-    .honor {
-      display: flex; justify-content: space-between;
-      align-items: baseline; flex-wrap: wrap;
-      gap: 8px; margin-bottom: 10px; font-size: 0.95em;
-    }
-    .honor-year {
-      font-family: Arial, sans-serif;
-      font-size: 0.9em; color: #555; white-space: nowrap;
-    }
-
-    /* ── Service ── */
-    .edu { margin-bottom: 18px; }
-    .edu-row {
-      display: flex; justify-content: space-between;
-      align-items: baseline; flex-wrap: wrap; gap: 4px;
-    }
-    .edu-school { font-weight: bold; }
-    .edu-date {
-      font-family: Arial, sans-serif;
-      font-size: 0.88em; color: #555;
-    }
-    .edu-info { font-size: 0.93em; color: #444; margin-top: 2px; }
-
-    /* ── FOOTER ── */
-    footer {
-      margin-top: 56px; padding-top: 16px;
-      border-top: 1px solid #eee;
-      font-family: Arial, sans-serif;
-      font-size: 0.82em; color: #bbb; text-align: center;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      nav { padding: 10px 16px; gap: 14px; flex-wrap: wrap; }
-      .wrap { padding: 24px 16px 48px; }
-      .profile { flex-direction: column; gap: 20px; }
-      .intern-row, .honor, .edu-row { flex-direction: column; }
-      .paper.hl { margin-left: 0; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cong Wan</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+  background: #fff;
+}
+a { color: #1772d0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 99;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex; align-items: center;
+  padding: 12px 40px;
+  gap: 28px;
+}
+.nav-name {
+  font-family: Arial, sans-serif;
+  font-weight: bold; font-size: 1.05em;
+  color: #222; flex: 1;
+}
+nav a {
+  font-family: Arial, sans-serif;
+  font-size: 0.9em; color: #1772d0;
+}
+/* ── WRAPPER ── */
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 36px 40px 60px;
+}
+/* ── PROFILE ── */
+.profile {
+  display: flex; gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+.profile-card h1 {
+  font-family: Arial, sans-serif;
+  font-size: 1.85em; font-weight: bold;
+  margin-bottom: 8px;
+}
+.profile-card p {
+  font-family: Arial, sans-serif;
+  font-size: 0.9em; color: #555;
+  line-height: 1.7;
+}
+.profile-links {
+  display: flex; flex-wrap: wrap;
+  gap: 6px; margin-top: 10px;
+}
+.profile-links a {
+  font-family: Arial, sans-serif;
+  font-size: 0.88em;
+  border: 1px solid #1772d0;
+  padding: 2px 10px; border-radius: 3px;
+}
+.bio { flex: 1; }
+.bio p { margin-bottom: 10px; font-size: 0.96em; }
+/* ── SECTION TITLES ── */
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 1.3em;
+  border-bottom: 2px solid #444;
+  padding-bottom: 5px;
+  margin: 40px 0 18px;
+}
+/* ── PAPERS ── */
+.repr-note {
+  font-family: Arial, sans-serif;
+  font-size: 0.88em; color: #666;
+  margin-bottom: 18px;
+}
+.paper { margin-bottom: 22px; }
+.paper.hl {
+  background: #fffef2;
+  border-left: 4px solid #f0a500;
+  padding: 10px 14px;
+  margin-left: -14px;
+}
+.ptitle { font-weight: bold; display: block; margin-bottom: 2px; }
+.pauthors { font-size: 0.93em; color: #444; display: block; margin-bottom: 2px; }
+.pvenue { font-size: 0.93em; display: block; margin-bottom: 4px; }
+.pvenue em { font-style: italic; }
+.pnote { font-size: 0.88em; color: #b00; font-weight: bold; }
+.plinks { font-family: Arial, sans-serif; font-size: 0.88em; }
+.plinks a { margin-right: 4px; }
+.me { font-weight: bold; text-decoration: underline; }
+/* ── INTERNSHIPS ── */
+.intern { margin-bottom: 22px; }
+.intern-row {
+  display: flex; justify-content: space-between;
+  align-items: baseline; flex-wrap: wrap; gap: 4px;
+}
+.intern-place { font-weight: bold; font-size: 1em; }
+.intern-date {
+  font-family: Arial, sans-serif;
+  font-size: 0.88em; color: #555; white-space: nowrap;
+}
+.intern-role {
+  font-style: italic; font-size: 0.93em; color: #444;
+  margin-top: 2px;
+}
+.intern-topic { font-size: 0.93em; color: #444; margin-top: 3px; }
+/* ── HONORS ── */
+.honor {
+  display: flex; justify-content: space-between;
+  align-items: baseline; flex-wrap: wrap;
+  gap: 8px; margin-bottom: 10px; font-size: 0.95em;
+}
+.honor-year {
+  font-family: Arial, sans-serif;
+  font-size: 0.9em; color: #555; white-space: nowrap;
+}
+/* ── SERVICE ── */
+.service-block { margin-bottom: 16px; }
+.service-type {
+  font-family: Arial, sans-serif;
+  font-size: 0.95em; font-weight: bold;
+  margin-bottom: 4px; color: #333;
+}
+/* ── FOOTER ── */
+footer {
+  margin-top: 56px; padding-top: 16px;
+  border-top: 1px solid #eee;
+  font-family: Arial, sans-serif;
+  font-size: 0.82em; color: #bbb; text-align: center;
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav { padding: 10px 16px; gap: 14px; flex-wrap: wrap; }
+  .wrap { padding: 24px 16px 48px; }
+  .profile { flex-direction: column; gap: 20px; }
+  .intern-row, .honor { flex-direction: column; }
+  .paper.hl { margin-left: 0; }
+}
+</style>
 </head>
 <body>
 
@@ -168,7 +154,7 @@
   <a href="#research">Research</a>
   <a href="#internships">Internships</a>
   <a href="#honors">Honors</a>
-  <a href="#education">Education</a>
+  <a href="#service">Service</a>
 </nav>
 
 <div class="wrap">
@@ -180,9 +166,12 @@
       <p>M.S. Student</p>
       <p>Xi'an Jiaotong University</p>
       <p>Email: wancong[at]stu.xjtu.edu.cn</p>
-      <a class="cv-link" href="#">[CV]</a>
+      <div class="profile-links">
+        <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en" target="_blank">[Google Scholar]</a>
+        <a href="https://github.com/vancyland" target="_blank">[GitHub]</a>
+        <a href="#">[CV]</a>
+      </div>
     </div>
-
     <div class="bio">
       <p>
         I am a M.S. student in Computer Science and Technology at the School of Software Engineering,
@@ -190,17 +179,16 @@
         advised by Prof. <a href="https://scholar.google.com/citations?user=GDHsOtIAAAAJ">Yihong Gong</a>.
         I received my B.S. degree in Mathematics from the School of Mathematics and Statistics, XJTU in 2024.
         I am currently a Research Intern at <strong>ByteDance Seed</strong>,
-        working on VLM pretraining and unified VLA systems.  
+        working on VLM pretraining and unified VLA systems.
         Previously, I was a Research Intern at Alibaba DAMO Academy, Microsoft Research Asia (MSRA),
         and ByteDance Seed.
       </p>
       <p>
         Most of my previous research focuses on vision foundation models, spanning model design,
-    large-scale pretraining, dataset collection, and benchmark evaluation.
-    Currently, I am dedicated to advancing the <strong>intelligence</strong> of unified multimodal models —
-    pushing them to perceive, reason, and act more like genuinely intelligent systems.
+        large-scale pretraining, dataset collection, and benchmark evaluation.
+        Currently, I am dedicated to advancing the <strong>intelligence</strong> of unified multimodal models —
+        pushing them to perceive, reason, and act more like genuinely intelligent systems.
       </p>
-
     </div>
   </div>
 
@@ -208,13 +196,16 @@
   <h2 id="research">Research</h2>
   <p class="repr-note">
     Representative papers are <strong>highlighted</strong>.
-    The full paper list can be found on <a href="#">Google Scholar</a>.
+    The full paper list can be found on
+    <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en" target="_blank">Google Scholar</a>.
   </p>
 
   <!-- ReMoT -->
   <div class="paper hl">
     <span class="ptitle">ReMoT: Reinforcement Learning with Motion Contrast Triplets</span>
-    <span class="pauthors"><span class="me">Cong Wan</span>, et al.</span>
+    <span class="pauthors">
+      <span class="me">C. Wan</span>, Z. Guo, J. Li, S. L. Dong, Y. Bai, L. Peng, Z. Ma, Y. Gong.
+    </span>
     <span class="pvenue">
       <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>
       (<strong>CVPR</strong>), 2026.
@@ -228,12 +219,15 @@
   <!-- GRID -->
   <div class="paper hl">
     <span class="ptitle">GRID: Omni Visual Generation</span>
-    <span class="pauthors"><span class="me">Cong Wan</span>, et al.</span>
+    <span class="pauthors">
+      <span class="me">C. Wan</span>, X. Luo, Z. Cai, Y. Song, Y. Zhao, Y. Bai, Y. He, Y. Gong.
+    </span>
     <span class="pvenue">
-      <em>Under Review</em>.
+      <em>arXiv preprint</em>, 2025. <em>(Under Review)</em>
     </span>
     <div class="plinks">
-      [<a href="https://github.com/vancyland/GRID">Code</a>]
+      [<a href="#">arXiv</a>]
+      &nbsp;[<a href="https://github.com/vancyland/GRID">Code</a>]
     </div>
   </div>
 
@@ -241,7 +235,7 @@
   <div class="paper">
     <span class="ptitle">Prompt-Agnostic Adversarial Perturbation for Customized Diffusion Models</span>
     <span class="pauthors">
-      <span class="me">Cong Wan</span>, Yuhang He, Xiang Song, Yihong Gong.
+      <span class="me">C. Wan</span>, Y. He, X. Song, Y. Gong.
     </span>
     <span class="pvenue">
       <em>Conference on Neural Information Processing Systems</em>
@@ -250,6 +244,36 @@
     <div class="plinks">
       [<a href="https://vancyland.github.io/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io/">Project Page</a>]
       &nbsp;[<a href="https://github.com/vancyland/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io">Code</a>]
+    </div>
+  </div>
+
+  <!-- CanonSwap -->
+  <div class="paper">
+    <span class="ptitle">CanonSwap: High-Fidelity and Consistent Video Face Swapping via Canonical Space Modulation</span>
+    <span class="pauthors">
+      X. Luo, Y. Zhu, Y. Liu, L. Lin, <span class="me">C. Wan</span>, Z. Cai, S. L. Huang, Y. Li.
+    </span>
+    <span class="pvenue">
+      <em>IEEE/CVF International Conference on Computer Vision</em>
+      (<strong>ICCV</strong>), 2025.
+    </span>
+    <div class="plinks">
+      [<a href="#">Paper</a>]
+    </div>
+  </div>
+
+  <!-- CIA -->
+  <div class="paper">
+    <span class="ptitle">CIA: Class-and Instance-aware Adaptation for Vision-Language Models</span>
+    <span class="pauthors">
+      L. Peng, <span class="me">C. Wan</span>, S. Wang, X. Song, Y. He, Y. Gong.
+    </span>
+    <span class="pvenue">
+      <em>ACM International Conference on Multimedia</em>
+      (<strong>MM</strong>), 2025, pp. 2870–2879.
+    </span>
+    <div class="plinks">
+      [<a href="#">Paper</a>]
     </div>
   </div>
 
@@ -292,19 +316,6 @@
     </div>
   </div>
 
-  <div class="intern">
-    <div class="intern-row">
-      <span class="intern-place">Yihong Gong Lab, Xi'an Jiaotong University</span>
-      <span class="intern-date">Dec. 2023 – May. 2024</span>
-    </div>
-    <div class="intern-role">Undergraduate Researcher</div>
-    <div class="intern-topic">
-      <strong>Advisor:</strong> Yihong Gong<br/>
-      <strong>Topic:</strong> Adversarial Perturbation for Personalized Diffusion Models;
-      Image Privacy &amp; Artistic Style Protection (PAP, NeurIPS 2024)
-    </div>
-  </div>
-
   <!-- ═══ HONORS ═══ -->
   <h2 id="honors">Honors</h2>
 
@@ -317,27 +328,26 @@
     <span class="honor-year">2024</span>
   </div>
 
-<!-- ═══ SERVICE ═══ -->
-<h2 id="service">Service</h2>
+  <!-- ═══ SERVICE ═══ -->
+  <h2 id="service">Service</h2>
 
-<div class="service-block">
-  <div class="service-type">Conference Reviewer</div>
-  <div class="honor">
-    <span>Neural Information Processing Systems (NeurIPS)</span>
-    <span class="honor-year">2025</span>
+  <div class="service-block">
+    <div class="service-type">Conference Reviewer</div>
+    <div class="honor">
+      <span>Neural Information Processing Systems (NeurIPS)</span>
+      <span class="honor-year">2025</span>
+    </div>
   </div>
-</div>
 
-<div class="service-block">
-  <div class="service-type">Journal Reviewer</div>
-  <div class="honor">
-    <span>IEEE Transactions on Multimedia (TMM)</span>
-    <span class="honor-year">2025</span>
+  <div class="service-block">
+    <div class="service-type">Journal Reviewer</div>
+    <div class="honor">
+      <span>IEEE Transactions on Multimedia (TMM)</span>
+      <span class="honor-year">2025</span>
+    </div>
   </div>
-</div>
 
   <footer>© Cong Wan &nbsp;|&nbsp; Last updated: Mar. 2026</footer>
 </div>
-
 </body>
 </html>
