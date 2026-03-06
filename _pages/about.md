@@ -1,104 +1,346 @@
----
-permalink: /
-title: ""
-excerpt: ""
-author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cong Wan</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #333;
+      background: #fff;
+    }
+    a { color: #1772d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-<span class='anchor' id='about-me'></span>
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 99;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      display: flex; align-items: center;
+      padding: 12px 40px;
+      gap: 28px;
+    }
+    .nav-name {
+      font-family: Arial, sans-serif;
+      font-weight: bold; font-size: 1.05em;
+      color: #222; flex: 1;
+    }
+    nav a {
+      font-family: Arial, sans-serif;
+      font-size: 0.9em; color: #1772d0;
+    }
 
-I am a M.S. student in Computer Science and Technology at the School of Software Engineering, [Xi'an Jiaotong University (XJTU)](https://www.xjtu.edu.cn/), advised by Prof. [Yihong Gong](https://scholar.google.com/citations?user=GDHsOtIAAAAJ). I received my B.S. in Mathematics from the School of Mathematics and Statistics, XJTU in 2024. I am a recipient of the **National Scholarship for Graduate Students (Top 1%)** and the **Outstanding Student Award** at XJTU.
+    /* ── WRAPPER ── */
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 36px 40px 60px;
+    }
 
-My research interests include **Embodied Intelligence & Spatial Reasoning** (VLA, temporal-spatial understanding, reinforcement learning), **Generative AI** (unified visual generation, video/3D generation), and **Vision-Language Models** (multimodal large models, spatial perception).
+    /* ── PROFILE ── */
+    .profile {
+      display: flex; gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+    .profile-card h1 {
+      font-family: Arial, sans-serif;
+      font-size: 1.85em; font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .profile-card p {
+      font-family: Arial, sans-serif;
+      font-size: 0.9em; color: #555;
+      line-height: 1.7;
+    }
+    .profile-card .cv-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: Arial, sans-serif;
+      font-size: 0.88em;
+      border: 1px solid #1772d0;
+      padding: 2px 10px; border-radius: 3px;
+    }
+    .bio { flex: 1; }
+    .bio p { margin-bottom: 10px; font-size: 0.96em; }
 
-I am currently a Research Intern at **ByteDance Seed** (Seed-Robotics), working on VLM spatial-temporal reasoning and unified embodied VLA systems.
+    /* ── SECTION TITLES ── */
+    h2 {
+      font-family: Arial, sans-serif;
+      font-size: 1.3em;
+      border-bottom: 2px solid #444;
+      padding-bottom: 5px;
+      margin: 40px 0 18px;
+    }
 
+    /* ── PAPERS ── */
+    .repr-note {
+      font-family: Arial, sans-serif;
+      font-size: 0.88em; color: #666;
+      margin-bottom: 18px;
+    }
+    .paper { margin-bottom: 22px; }
+    .paper.hl {
+      background: #fffef2;
+      border-left: 4px solid #f0a500;
+      padding: 10px 14px;
+      margin-left: -14px;
+    }
+    .ptitle { font-weight: bold; display: block; margin-bottom: 2px; }
+    .pauthors { font-size: 0.93em; color: #444; display: block; margin-bottom: 2px; }
+    .pvenue  { font-size: 0.93em; display: block; margin-bottom: 4px; }
+    .pvenue em { font-style: italic; }
+    .pnote { font-size: 0.88em; color: #b00; font-weight: bold; }
+    .plinks { font-family: Arial, sans-serif; font-size: 0.88em; }
+    .plinks a { margin-right: 4px; }
+    .me { font-weight: bold; text-decoration: underline; }
 
-# 🔥 News
-- *2026.02*: &nbsp;🎉 One paper (**ReMoT**) accepted by **CVPR 2026**!
-- *2025.11*: &nbsp;Started research internship at **ByteDance Seed** (Seed-Robotics).
-- *2025.06*: &nbsp;Started research internship at **Microsoft Research Asia (MSRA)**.
-- *2024.12*: &nbsp;Started research internship at **Alibaba DAMO Academy**.
-- *2024.09*: &nbsp;🎉 One paper (**PAP**) accepted by **NeurIPS 2024**!
+    /* ── INTERNSHIPS ── */
+    .intern { margin-bottom: 22px; }
+    .intern-row {
+      display: flex; justify-content: space-between;
+      align-items: baseline; flex-wrap: wrap; gap: 4px;
+    }
+    .intern-place { font-weight: bold; font-size: 1em; }
+    .intern-date {
+      font-family: Arial, sans-serif;
+      font-size: 0.88em; color: #555; white-space: nowrap;
+    }
+    .intern-role {
+      font-style: italic; font-size: 0.93em; color: #444;
+      margin-top: 2px;
+    }
+    .intern-topic { font-size: 0.93em; color: #444; margin-top: 3px; }
 
+    /* ── HONORS ── */
+    .honor {
+      display: flex; justify-content: space-between;
+      align-items: baseline; flex-wrap: wrap;
+      gap: 8px; margin-bottom: 10px; font-size: 0.95em;
+    }
+    .honor-year {
+      font-family: Arial, sans-serif;
+      font-size: 0.9em; color: #555; white-space: nowrap;
+    }
 
-# 📝 Publications
+    /* ── EDUCATION ── */
+    .edu { margin-bottom: 18px; }
+    .edu-row {
+      display: flex; justify-content: space-between;
+      align-items: baseline; flex-wrap: wrap; gap: 4px;
+    }
+    .edu-school { font-weight: bold; }
+    .edu-date {
+      font-family: Arial, sans-serif;
+      font-size: 0.88em; color: #555;
+    }
+    .edu-info { font-size: 0.93em; color: #444; margin-top: 2px; }
 
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <div class="badge">CVPR 2026</div>
-      <img src='images/remot_teaser.png' alt="ReMoT" width="100%">
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 56px; padding-top: 16px;
+      border-top: 1px solid #eee;
+      font-family: Arial, sans-serif;
+      font-size: 0.82em; color: #bbb; text-align: center;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 10px 16px; gap: 14px; flex-wrap: wrap; }
+      .wrap { padding: 24px 16px 48px; }
+      .profile { flex-direction: column; gap: 20px; }
+      .intern-row, .honor, .edu-row { flex-direction: column; }
+      .paper.hl { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <span class="nav-name">Cong Wan</span>
+  <a href="#research">Research</a>
+  <a href="#internships">Internships</a>
+  <a href="#honors">Honors</a>
+  <a href="#education">Education</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- ═══ PROFILE ═══ -->
+  <div class="profile">
+    <div class="profile-card">
+      <h1>Cong Wan</h1>
+      <p>M.S. Student</p>
+      <p>Xi'an Jiaotong University</p>
+      <p>Email: wancong[at]stu.xjtu.edu.cn</p>
+      <a class="cv-link" href="#">[CV]</a>
+    </div>
+
+    <div class="bio">
+      <p>
+        I am a M.S. student in Computer Science and Technology at the School of Software Engineering,
+        <a href="https://www.xjtu.edu.cn/">Xi'an Jiaotong University (XJTU)</a>,
+        advised by Prof. <a href="https://scholar.google.com/citations?user=GDHsOtIAAAAJ">Yihong Gong</a>.
+        I received my B.S. degree in Mathematics from the School of Mathematics and Statistics, XJTU in 2024.
+        Previously, I was a Research Intern at Alibaba DAMO Academy, Microsoft Research Asia (MSRA),
+        and ByteDance Seed.
+      </p>
+      <p>
+        My research interests include <strong>Embodied Intelligence &amp; Spatial Reasoning</strong>
+        (VLA, temporal-spatial understanding, reinforcement learning),
+        <strong>Generative AI</strong> (unified visual generation, video/3D generation), and
+        <strong>Vision-Language Models</strong> (multimodal large models, spatial perception).
+      </p>
+      <p>
+        I am currently a Research Intern at <strong>ByteDance Seed</strong> (Seed-Robotics),
+        working on VLM spatial-temporal reasoning and unified embodied VLA systems.
+      </p>
     </div>
   </div>
-  <div class='paper-box-text' markdown="1">
 
-**ReMoT: Reinforcement Learning with Motion Contrast Triplets**
+  <!-- ═══ RESEARCH ═══ -->
+  <h2 id="research">Research</h2>
+  <p class="repr-note">
+    Representative papers are <strong>highlighted</strong>.
+    The full paper list can be found on <a href="#">Google Scholar</a>.
+  </p>
 
-**Cong Wan**, et al.
-
-*IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026*
-
-[**Paper**](#) \| [**Code**](#)
-
-- Constructs the **ReMoT-16K** motion contrast triplet dataset via a multi-expert collaborative pipeline, overcoming the 55% format error rate of direct VLM generation.
-- Designs a **SFT↔GRPO hybrid** training paradigm with logical consistency rewards; the 4B model achieves **25.1% improvement** in spatial-temporal reasoning on VLM2/VSI benchmarks, surpassing models 7.5× larger (e.g., Qwen3-VL-30B), while maintaining performance on general benchmarks.
-
-  </div>
-</div>
-
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <div class="badge">Under Review</div>
-      <img src='images/gridshow_teaser.png' alt="GRID" width="100%">
+  <!-- ReMoT -->
+  <div class="paper hl">
+    <span class="ptitle">ReMoT: Reinforcement Learning with Motion Contrast Triplets</span>
+    <span class="pauthors"><span class="me">Cong Wan</span>, et al.</span>
+    <span class="pvenue">
+      <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>
+      (<strong>CVPR</strong>), 2026.
+    </span>
+    <div class="plinks">
+      [<a href="#">Paper</a>]
+      &nbsp;[<a href="#">Code</a>]
     </div>
   </div>
-  <div class='paper-box-text' markdown="1">
 
-**GRID: Omni Visual Generation**
-
-**Cong Wan**, et al.
-
-[**Code**](https://github.com/vancyland/GRID)
-
-- Proposes a unified visual generation framework that reframes temporal sequences as **spatial grid layout problems** by repurposing the FLUX architecture, achieving up to **1000× training efficiency** improvement over conventional video generation pipelines.
-- Constructs **35k high-quality video-text pairs** and supports full-stack visual generation tasks including Text-to-Video (T2V), Text-to-Multi-View (T2MV), and video editing.
-
+  <!-- GRID -->
+  <div class="paper hl">
+    <span class="ptitle">GRID: Omni Visual Generation</span>
+    <span class="pauthors"><span class="me">Cong Wan</span>, et al.</span>
+    <span class="pvenue">
+      <em>Under Review</em>.
+    </span>
+    <div class="plinks">
+      [<a href="https://github.com/vancyland/GRID">Code</a>]
+    </div>
   </div>
+
+  <!-- PAP -->
+  <div class="paper">
+    <span class="ptitle">Prompt-Agnostic Adversarial Perturbation for Customized Diffusion Models</span>
+    <span class="pauthors">
+      <span class="me">Cong Wan</span>, Yuhang He, Xiang Song, Yihong Gong.
+    </span>
+    <span class="pvenue">
+      <em>Conference on Neural Information Processing Systems</em>
+      (<strong>NeurIPS</strong>), 2024.
+    </span>
+    <div class="plinks">
+      [<a href="https://vancyland.github.io/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io/">Project Page</a>]
+      &nbsp;[<a href="https://github.com/vancyland/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io">Code</a>]
+    </div>
+  </div>
+
+  <!-- ═══ INTERNSHIPS ═══ -->
+  <h2 id="internships">Internships</h2>
+
+  <div class="intern">
+    <div class="intern-row">
+      <span class="intern-place">Seed-Robotics, ByteDance Seed</span>
+      <span class="intern-date">Nov. 2025 – Mar. 2026</span>
+    </div>
+    <div class="intern-role">Multimodal Algorithm Research Intern</div>
+    <div class="intern-topic">
+      <strong>Topic:</strong> VLM Spatial-Temporal Reasoning (ReMoT, CVPR 2026);
+      Unified VLA World Model; Interleaved Image-Text Reasoning for Robot Manipulation
+    </div>
+  </div>
+
+  <div class="intern">
+    <div class="intern-row">
+      <span class="intern-place">Machine Learning Group, Microsoft Research Asia (MSRA)</span>
+      <span class="intern-date">Jun. 2025 – Oct. 2025</span>
+    </div>
+    <div class="intern-role">World Model Algorithm Research Intern</div>
+    <div class="intern-topic">
+      <strong>Topic:</strong> Voxel-based World Model; Dynamic Scene Consistency;
+      Minetest Simulation Data Construction (10k videos × 2000 frames, 64³ voxel annotations)
+    </div>
+  </div>
+
+  <div class="intern">
+    <div class="intern-row">
+      <span class="intern-place">Basic Vision Lab, Alibaba DAMO Academy</span>
+      <span class="intern-date">Dec. 2024 – Jun. 2025</span>
+    </div>
+    <div class="intern-role">AIGC Algorithm Research Intern</div>
+    <div class="intern-topic">
+      <strong>Topic:</strong> Unified Visual Generation (GRID); LuminaData/寻光Edit Dataset Construction;
+      VLM Four-Dimensional Spatial Evaluation (ScanNet / NuScenes / AgiBot / OmniWorld)
+    </div>
+  </div>
+
+  <div class="intern">
+    <div class="intern-row">
+      <span class="intern-place">Yihong Gong Lab, Xi'an Jiaotong University</span>
+      <span class="intern-date">Dec. 2023 – May. 2024</span>
+    </div>
+    <div class="intern-role">Undergraduate Researcher</div>
+    <div class="intern-topic">
+      <strong>Advisor:</strong> Yihong Gong<br/>
+      <strong>Topic:</strong> Adversarial Perturbation for Personalized Diffusion Models;
+      Image Privacy &amp; Artistic Style Protection (PAP, NeurIPS 2024)
+    </div>
+  </div>
+
+  <!-- ═══ HONORS ═══ -->
+  <h2 id="honors">Honors</h2>
+
+  <div class="honor">
+    <span>National Scholarship for Graduate Students (Top 1%), Xi'an Jiaotong University</span>
+    <span class="honor-year">2024</span>
+  </div>
+  <div class="honor">
+    <span>Outstanding Student Award, Xi'an Jiaotong University</span>
+    <span class="honor-year">2024</span>
+  </div>
+
+  <!-- ═══ EDUCATION ═══ -->
+  <h2 id="education">Education</h2>
+
+  <div class="edu">
+    <div class="edu-row">
+      <span class="edu-school">Xi'an Jiaotong University</span>
+      <span class="edu-date">Sep. 2024 – Jun. 2027 (expected)</span>
+    </div>
+    <div class="edu-info">M.S. in Computer Science and Technology, School of Software Engineering</div>
+    <div class="edu-info">
+      Advisor: Prof. <a href="https://scholar.google.com/citations?user=GDHsOtIAAAAJ">Yihong Gong</a>
+    </div>
+  </div>
+
+  <div class="edu">
+    <div class="edu-row">
+      <span class="edu-school">Xi'an Jiaotong University</span>
+      <span class="edu-date">Sep. 2020 – Jun. 2024</span>
+    </div>
+    <div class="edu-info">B.S. in Mathematics, School of Mathematics and Statistics</div>
+  </div>
+
+  <footer>© Cong Wan &nbsp;|&nbsp; Last updated: Mar. 2026</footer>
 </div>
 
-- **Prompt-Agnostic Adversarial Perturbation for Customized Diffusion Models**, **Cong Wan**, et al. *NeurIPS 2024*. \[[Project Page](https://vancyland.github.io/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io/)\] \[[Code](https://github.com/vancyland/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io)\]
-  - Proposes a **prompt-agnostic adversarial evaluation protocol** for AIGC image protection, modeling the prompt distribution via Laplace Approximation and maximizing expected perturbation to address the failure of existing prompt-specific methods under unknown-prompt scenarios.
-  - Achieves **SOTA** on both face privacy protection and artistic style protection benchmarks.
-
-
-# 💼 Internships
-
-- *2025.11 - 2026.03* &nbsp;<img src="images/bytedance_logo.png" alt="ByteDance" height="20" style="vertical-align:middle;"> &nbsp;**Multimodal Algorithm Research Intern**, Seed-Robotics, ByteDance Seed
-  - **ReMoT** *(CVPR 2026)*: Developed the full ReMoT pipeline; built motion contrast triplet datasets through multi-expert collaboration to enhance VLM spatial-temporal reasoning; the 4B model achieves SOTA on spatial-temporal and multiple general benchmarks.
-  - **Unified VLA World Model**: Developed an interleaved image-text reasoning architecture enabling autonomous visual generation and planning for robot manipulation; integrated datasets including Bridge, RT-1, Ego4D, Fourier ActionNet, RoboMind, OpenVid-1M, FineVision, and Zebro-COT; constructed interleaved reasoning scenario data and the corresponding evaluation benchmarks.
-
-- *2025.06 - 2025.10* &nbsp;<img src="images/msra_logo.png" alt="MSRA" height="20" style="vertical-align:middle;"> &nbsp;**World Model Algorithm Research Intern**, Machine Learning Group, Microsoft Research Asia (MSRA)
-  - Constructed **10k Minetest simulation videos** (2,000 frames each) with **64³ voxel annotations**; designed **23 action combination evaluation scenarios**; supported voxel-pixel joint training, achieving a **23% consistency improvement** over SOTA.
-
-- *2024.12 - 2025.06* &nbsp;<img src="images/alibaba_logo.png" alt="Alibaba" height="20" style="vertical-align:middle;"> &nbsp;**AIGC Algorithm Research Intern**, Basic Vision Lab, Alibaba DAMO Academy
-  - **GRID**: Proposed the GRID unified visual generation method, converting video sequences into grid images and repurposing FLUX for image-based training; achieved **1000× training efficiency** improvement; constructed 35k high-quality video-text pairs supporting full-stack visual generation (T2V, T2MV, editing).
-  - **LuminaData / 寻光Edit**: Co-built a tens-of-millions-scale editing dataset covering grounding, local editing, style transfer, and watermark removal; integrated **80M inpainting samples**, **21,000 indoor 3D renderings**, and **4,730 real-capture data** samples.
-  - **VLM Spatial Evaluation**: Constructed a four-dimensional VLM spatial evaluation system covering geometric scale, Ego-centric orientation, scene viewpoint, and embodied operation, based on ScanNet/NuScenes/AgiBot/OmniWorld data; evaluated generation models including Banana, GPT-4o, Bagel, and Qwen-Image.
-
-- *2023.12 - 2024.05* &nbsp;<img src="images/xjtu_logo.png" alt="XJTU" height="20" style="vertical-align:middle;"> &nbsp;**Undergraduate Researcher**, Yihong Gong Lab, Xi'an Jiaotong University
-  - Proposed **PAP**, a prompt-agnostic adversarial perturbation method for personalized diffusion models; modeled the prompt distribution via Laplace Approximation and maximized expected perturbation to solve the weak image protection problem under unknown-prompt scenarios.
-  - Achieved **SOTA** on face privacy protection and artistic style protection benchmarks *(NeurIPS 2024)*.
-
-
-# 🎓 Education
-
-- *2024.09 - 2027.06 (expected)* &nbsp;M.S. in Computer Science and Technology, School of Software Engineering, **Xi'an Jiaotong University**
-  - Advisor: Prof. Yihong Gong
-  - 🏆 National Scholarship for Graduate Students (Top 1%) \| Outstanding Student Award
-
-- *2020.09 - 2024.06* &nbsp;B.S. in Mathematics, School of Mathematics and Statistics, **Xi'an Jiaotong University**
+</body>
+</html>
