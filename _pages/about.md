@@ -8,51 +8,113 @@ redirect_from:
   - /about.html
 ---
 
-{% if site.google_scholar_stats_use_cdn %}
-{% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
-{% else %}
-{% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
-{% endif %}
-{% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
-
 <span class='anchor' id='about-me'></span>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. Suspendisse condimentum, libero vel tempus mattis, risus risus vulputate libero, elementum fermentum mi neque vel nisl. Maecenas facilisis maximus dignissim. Curabitur mattis vulputate dui, tincidunt varius libero luctus eu. Mauris mauris nulla, scelerisque eget massa id, tincidunt congue felis. Sed convallis tempor ipsum rhoncus viverra. Pellentesque nulla orci, accumsan volutpat fringilla vitae, maximus sit amet tortor. Aliquam ultricies odio ut volutpat scelerisque. Donec nisl nisl, porttitor vitae pharetra quis, fringilla sed mi. Fusce pretium dolor ut aliquam consequat. Cras volutpat, tellus accumsan mattis molestie, nisl lacus tempus massa, nec malesuada tortor leo vel quam. Aliquam vel ex consectetur, vehicula leo nec, efficitur eros. Donec convallis non urna quis feugiat.
+I am a M.S. student in Software Engineering at [Xi'an Jiaotong University (XJTU)](https://www.xjtu.edu.cn/), advised by Prof. [Yihong Gong](https://scholar.google.com/citations?user=GDHsOtIAAAAJ). I received my B.Eng. in Mathematics and Statistics from XJTU in 2024.
 
-My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
+My research interests include **Embodied Intelligence & Spatial Reasoning** (VLA, temporal-spatial understanding, reinforcement learning), **Generative AI** (unified visual generation, video/3D generation), and **Vision-Language Models** (multimodal large models, spatial perception).
+
+I am currently a Research Intern at **ByteDance Seed**, working on unified video generation and embodied planning (VLA).
 
 
 # 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2026.02*: &nbsp; 🎉 One paper (**ReMoT**) accepted by **CVPR 2026**!
+- *2025.11*: &nbsp; Started research internship at **ByteDance Seed**.
+- *2025.06*: &nbsp; Started research internship at **Microsoft Research Asia (MSRA)**.
+- *2025.01*: &nbsp; Started research internship at **Alibaba DAMO Academy**.
+- *2024.09*: &nbsp; 🎉 One paper (**PAP**) accepted by **NeurIPS 2024**!
 
-# 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
+# 📝 Publications
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">CVPR 2026</div>
+      <img src='images/remot_teaser.png' alt="ReMoT" width="100%">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1">
 
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+**ReMoT: Reinforcement Learning with Motion Contrast Triplets**
 
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+**Cong Wan**, et al.
+
+*IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026*
+
+[**Paper**](#) \| [**Code**](#)
+
+- Proposes a multi-expert collaborative framework that automatically constructs the ReMoT-16K motion contrast triplet dataset (16.5k samples), avoiding the 55% format error rate of direct VLM generation.
+- Designs a SFT↔GRPO hybrid training paradigm with logical consistency rewards; achieves **25.1%** improvement in spatial-temporal reasoning, with a 4B model surpassing Qwen3-VL-30B (7.5× larger) on VLM2/VSI benchmarks.
+
+  </div>
 </div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">CVPR 2025 Under Review</div>
+      <img src='images/voxel_teaser.png' alt="Voxel World Model" width="100%">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1">
+
+**Voxel-based World Model for Dynamic Scene Consistency**
+
+**Cong Wan**, et al.
+
+*Under Review at CVPR 2025*
+
+- Constructs 10k simulation videos (2000 frames each) with 64³ voxel annotations on Minetest; designs 23 action combination evaluation scenarios.
+- Supports voxel-pixel joint training, achieving **23%** consistency improvement over SOTA.
+
+  </div>
 </div>
 
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">ICLR 2025 Under Review</div>
+      <img src='images/gridshow_teaser.png' alt="GridShow" width="100%">
+    </div>
+  </div>
+  <div class='paper-box-text' markdown="1">
 
-# 🎖 Honors and Awards
-- *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+**GridShow: Omni Visual Generation**
 
-# 📖 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+**Cong Wan**, et al.
 
-# 💬 Invited Talks
-- *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/)
+*Under Review at ICLR 2025*
 
-# 💻 Internships
-- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+[**Code**](https://github.com/vancyland/GRID)
+
+- Presents a unified framework for omni visual generation tasks, built on 35k high-quality video-text pairs.
+
+  </div>
+</div>
+
+- **Prompt-Agnostic Adversarial Perturbation for Customized Diffusion Models**, **Cong Wan**, et al. *NeurIPS 2024*. \[[Project Page](https://vancyland.github.io/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io/)\] \[[Code](https://github.com/vancyland/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io)\]
+
+
+# 💼 Internships
+
+- *2025.11 - 2026.03* &nbsp; <img src="images/bytedance_logo.png" alt="ByteDance" height="20" style="vertical-align:middle;"> &nbsp; **Research Intern**, Multimodal Research, ByteDance Seed
+  - **Unified VLA**: Built a unified video generation and embodied planning framework based on the StarVLA architecture, training Wan VAE, DiT, and Action Head from scratch. Integrated 10+ robot and video datasets (Bridge, RT-1, IOAI, Bytemini PPAA, AGIBot, Ego4D, Fourier ActionNet, RoboCoin, RoboMind, OpenVid-1M) to enable joint modeling of embodied manipulation and natural video, improving cross-task generalization.
+  - **ReMoT** *(CVPR 2026)*: Designed and led the full pipeline from dataset construction to reinforcement learning training; see Publications above.
+
+- *2025.01 - 2025.10* &nbsp; <img src="images/alibaba_logo.png" alt="Alibaba" height="20" style="vertical-align:middle;"> &nbsp; **Research Intern**, Basic Vision Lab, Alibaba DAMO Academy
+  - **Spatial Perception Evaluation & Generation**: Built a four-dimensional evaluation system (geometric scale, centric orientation, scene viewpoint, embodied operation) based on ScanNet/NuScenes/AgiBot; trained a Geometry-Aligned VAE for improved 3D-aware generation.
+  - **LuminaEdit Dataset**: Constructed a tens-of-millions-scale editing dataset covering grounding, local editing, style transfer, and watermark removal; integrated 80M inpainting samples, achieving **19%** realism improvement over IC-Light.
+
+- *2025.06 - 2025.09* &nbsp; <img src="images/msra_logo.png" alt="MSRA" height="20" style="vertical-align:middle;"> &nbsp; **Research Intern**, Machine Learning Group, Microsoft Research Asia (MSRA)
+  - Built 10k Minetest simulation videos (2000 frames each) with 64³ voxel annotations; designed 23 action combination evaluation scenarios; supported voxel-pixel joint training, achieving **23%** consistency improvement over SOTA *(corresponding to CVPR 2025 submission)*.
+
+- *2024.05 - 2025.01* &nbsp; <img src="images/xjtu_logo.png" alt="XJTU" height="20" style="vertical-align:middle;"> &nbsp; **Graduate Researcher**, Yihong Gong Lab, Xi'an Jiaotong University — Led GRID unified visual generation project (ICLR 2025 under review), constructing 35k high-quality video-text pairs.
+
+
+# 🎓 Education
+
+- *2024 - 2027 (expected)* &nbsp; M.Eng. in Software Engineering, **Xi'an Jiaotong University**
+  - Advisor: Prof. Yihong Gong
+
+- *2020 - 2024* &nbsp; B.Eng. in Mathematics and Statistics, **Xi'an Jiaotong University**
