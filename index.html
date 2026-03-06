@@ -45,6 +45,24 @@ nav a {
   align-items: flex-start;
   margin-bottom: 40px;
 }
+.profile-photo {
+  flex-shrink: 0;
+  width: 160px;
+}
+.profile-photo img {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+.profile-right {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
 .profile-card h1 {
   font-family: Arial, sans-serif;
   font-size: 1.85em; font-weight: bold;
@@ -65,7 +83,6 @@ nav a {
   border: 1px solid #1772d0;
   padding: 2px 10px; border-radius: 3px;
 }
-.bio { flex: 1; }
 .bio p { margin-bottom: 10px; font-size: 0.96em; }
 /* ── SECTION TITLES ── */
 h2 {
@@ -141,6 +158,8 @@ footer {
   nav { padding: 10px 16px; gap: 14px; flex-wrap: wrap; }
   .wrap { padding: 24px 16px 48px; }
   .profile { flex-direction: column; gap: 20px; }
+  .profile-photo { width: 100%; }
+  .profile-photo img { width: 120px; height: 150px; }
   .intern-row, .honor { flex-direction: column; }
   .paper.hl { margin-left: 0; }
 }
@@ -160,7 +179,7 @@ footer {
 <div class="wrap">
 
   <!-- ═══ PROFILE ═══ -->
-   <div class="profile">
+  <div class="profile">
 
     <!-- 头像 -->
     <div class="profile-photo">
@@ -169,37 +188,39 @@ footer {
 
     <!-- 右侧：姓名 + 简介 -->
     <div class="profile-right">
-    <div class="profile-card">
-      <h1>Cong Wan</h1>
-      <p>M.S. Student</p>
-      <p>Xi'an Jiaotong University</p>
-      <p>Email: wancong[at]stu.xjtu.edu.cn</p>
-      <div class="profile-links">
-        <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en" target="_blank">[Google Scholar]</a>
-        <a href="https://github.com/vancyland" target="_blank">[GitHub]</a>
-        <a href="#">[CV]</a>
+      <div class="profile-card">
+        <h1>Cong Wan</h1>
+        <p>M.S. Student</p>
+        <p>Xi'an Jiaotong University</p>
+        <p>Email: wancong[at]stu.xjtu.edu.cn</p>
+        <div class="profile-links">
+          <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en" target="_blank">[Google Scholar]</a>
+          <a href="https://github.com/vancyland" target="_blank">[GitHub]</a>
+          <a href="#">[CV]</a>
+        </div>
+      </div>
+
+      <div class="bio">
+        <p>
+          I am a M.S. student in Computer Science and Technology at the School of Software Engineering,
+          <a href="https://www.xjtu.edu.cn/">Xi'an Jiaotong University (XJTU)</a>,
+          advised by Prof. <a href="https://scholar.google.com/citations?user=GDHsOtIAAAAJ">Yihong Gong</a>.
+          I received my B.S. degree in Mathematics from the School of Mathematics and Statistics, XJTU in 2024.
+          I am currently a Research Intern at <strong>ByteDance Seed</strong>,
+          working on VLM pretraining and unified VLA systems.
+          Previously, I was a Research Intern at Alibaba DAMO Academy, Microsoft Research Asia (MSRA),
+          and ByteDance Seed.
+        </p>
+        <p>
+          Most of my previous research focuses on vision foundation models, spanning model design,
+          large-scale pretraining, dataset collection, and benchmark evaluation.
+          Currently, I am dedicated to advancing the <strong>intelligence</strong> of unified multimodal models —
+          pushing them to perceive, reason, and act more like genuinely intelligent systems.
+        </p>
       </div>
     </div>
-    <div class="bio">
-      <p>
-        I am a M.S. student in Computer Science and Technology at the School of Software Engineering,
-        <a href="https://www.xjtu.edu.cn/">Xi'an Jiaotong University (XJTU)</a>,
-        advised by Prof. <a href="https://scholar.google.com/citations?user=GDHsOtIAAAAJ">Yihong Gong</a>.
-        I received my B.S. degree in Mathematics from the School of Mathematics and Statistics, XJTU in 2024.
-        I am currently a Research Intern at <strong>ByteDance Seed</strong>,
-        working on VLM pretraining and unified VLA systems.
-        Previously, I was a Research Intern at Alibaba DAMO Academy, Microsoft Research Asia (MSRA),
-        and ByteDance Seed.
-      </p>
-      <p>
-        Most of my previous research focuses on vision foundation models, spanning model design,
-        large-scale pretraining, dataset collection, and benchmark evaluation.
-        Currently, I am dedicated to advancing the <strong>intelligence</strong> of unified multimodal models —
-        pushing them to perceive, reason, and act more like genuinely intelligent systems.
-      </p>
-    </div>
+
   </div>
-</div>
 
   <!-- ═══ RESEARCH ═══ -->
   <h2 id="research">Research</h2>
