@@ -136,12 +136,23 @@ section{margin-top:52px;scroll-margin-top:80px;}
 }
 .pub:hover{background:var(--panel);}
 .pub.hl{background:#fffdf4;border-color:#f2e3b3;}
-.pub-badge{flex-shrink:0;width:96px;text-align:center;}
-.badge{
-  display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.01em;
-  color:#fff;padding:5px 0;width:96px;border-radius:8px;line-height:1.15;
+.pub-thumb{flex-shrink:0;width:172px;display:flex;flex-direction:column;gap:8px;}
+.pub-thumb img{
+  width:172px;height:114px;object-fit:cover;border-radius:10px;
+  border:1px solid var(--line);background:#fff;display:block;
+  box-shadow:0 2px 8px rgba(20,32,64,.06);
 }
-.badge small{display:block;font-size:.68rem;font-weight:600;opacity:.9;}
+.badge{
+  display:block;font-size:.74rem;font-weight:700;letter-spacing:.01em;
+  color:#fff;padding:5px 0;width:100%;border-radius:8px;line-height:1.15;text-align:center;
+}
+.badge small{display:inline;font-size:.68rem;font-weight:600;opacity:.9;margin-left:5px;}
+.ph{
+  width:172px;height:114px;border-radius:10px;color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:800;font-size:1.05rem;letter-spacing:.02em;line-height:1.15;text-align:center;
+}
+.ph small{font-weight:600;font-size:.76rem;opacity:.92;margin-top:3px;}
 .b-cvpr{background:#1f6feb;}
 .b-neurips{background:#7048e8;}
 .b-iccv{background:#0c8599;}
@@ -206,8 +217,10 @@ footer{
   .hero-photo img{width:150px;height:188px;margin:0 auto;}
   .links{justify-content:center;}
   .hero-body h1{font-size:2.1rem;}
-  .pub{flex-direction:column;gap:10px;}
-  .pub-badge{width:auto;text-align:left;}
+  .pub{flex-direction:column;gap:12px;}
+  .pub-thumb{width:100%;flex-direction:row;gap:10px;align-items:center;}
+  .pub-thumb img{width:150px;height:100px;}
+  .ph{width:150px;height:100px;flex-shrink:0;}
   .svc{flex-direction:column;gap:2px;}
   .svc-role{width:auto;}
 }
@@ -316,7 +329,10 @@ footer{
 
     <!-- DataClaw -->
     <div class="pub hl">
-      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2026</small></span></div>
+      <div class="pub-thumb">
+        <img src="images/pubs/dataclaw.webp" alt="DataClaw teaser" loading="lazy" />
+        <span class="badge b-neurips">NeurIPS<small>2026</small></span>
+      </div>
       <div class="pub-main">
         <span class="pub-title">DataClaw: Agentic Tailoring Multimodal Data from Raw Streams</span>
         <div class="pub-authors"><span class="me">Cong Wan</span>, Zeyu Guo, Zijian Cai, Jiangyang Li, SongLin Dong, Lin Peng, Xiangyang Luo, Zhiheng Ma, Yihong Gong</div>
@@ -331,7 +347,7 @@ footer{
 
     <!-- WorldCanvas -->
     <div class="pub hl">
-      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2026</small></span></div>
+      <div class="pub-thumb"><div class="ph b-neurips">NeurIPS<small>2026 · Under review</small></div></div>
       <div class="pub-main">
         <span class="pub-title">WorldCanvas: Context-Guided Embodied Video Synthesis with a Unified Visual Canvas</span>
         <div class="pub-authors"><span class="me">Cong Wan</span>, Jingzhou You, SongLin Dong, Kailai Chen, Zhiheng Ma, Yihong Gong</div>
@@ -341,7 +357,10 @@ footer{
 
     <!-- ReMoT -->
     <div class="pub hl">
-      <div class="pub-badge"><span class="badge b-cvpr">CVPR<small>2026</small></span></div>
+      <div class="pub-thumb">
+        <img src="images/pubs/remot.webp" alt="ReMoT teaser" loading="lazy" />
+        <span class="badge b-cvpr">CVPR<small>2026</small></span>
+      </div>
       <div class="pub-main">
         <span class="pub-title">ReMoT: Reinforcement Learning with Motion Contrast Triplets</span>
         <div class="pub-authors"><span class="me">Cong Wan</span>, Zeyu Guo, Jiangyang Li, SongLin Dong, Yifan Bai, Lin Peng, Zhiheng Ma, Yihong Gong</div>
@@ -354,7 +373,7 @@ footer{
 
     <!-- ProSR -->
     <div class="pub">
-      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2026</small></span></div>
+      <div class="pub-thumb"><div class="ph b-neurips">NeurIPS<small>2026 · Under review</small></div></div>
       <div class="pub-main">
         <span class="pub-title">ProSR: Process-Shaped Spatial Reasoning for Reliable Chain-of-Thought in VLMs</span>
         <div class="pub-authors">Jiangyang Li, <span class="me">Cong Wan</span>, Changjie Wu, SongLin Dong, Lingjun Zhang, Linzhe Shi, Xu Wang, Zhiheng Ma, Hang Zhang, Mu Xu, Yihong Gong</div>
@@ -364,7 +383,7 @@ footer{
 
     <!-- Retrieve-then-Steer -->
     <div class="pub">
-      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2026</small></span></div>
+      <div class="pub-thumb"><div class="ph b-neurips">NeurIPS<small>2026 · Under review</small></div></div>
       <div class="pub-main">
         <span class="pub-title">Retrieve-then-Steer: Online Success Memory for Test-Time Adaptation of Generative VLAs</span>
         <div class="pub-authors">Jianchao Zhao, Huoren Yang, Yusong Hu, Yuyang Gao, Qiguan Ou, <span class="me">Cong Wan</span>, SongLin Dong, Zhiheng Ma, Yihong Gong</div>
@@ -374,7 +393,7 @@ footer{
 
     <!-- VLN -->
     <div class="pub">
-      <div class="pub-badge"><span class="badge b-cvpr">CVPR<small>2026</small></span></div>
+      <div class="pub-thumb"><div class="ph b-cvpr">CVPR<small>2026 · Findings</small></div></div>
       <div class="pub-main">
         <span class="pub-title">Trajectory-Diversity-Driven Robust Vision-and-Language Navigation</span>
         <div class="pub-authors">Jiangyang Li, <span class="me">Cong Wan</span>, SongLin Dong, Chenhao Ding, Qiang Wang, Zhiheng Ma, Yihong Gong</div>
@@ -384,7 +403,10 @@ footer{
 
     <!-- CanonSwap -->
     <div class="pub">
-      <div class="pub-badge"><span class="badge b-iccv">ICCV<small>2025</small></span></div>
+      <div class="pub-thumb">
+        <img src="images/pubs/canonswap.webp" alt="CanonSwap teaser" loading="lazy" />
+        <span class="badge b-iccv">ICCV<small>2025</small></span>
+      </div>
       <div class="pub-main">
         <span class="pub-title">CanonSwap: High-Fidelity and Consistent Video Face Swapping via Canonical Space Modulation</span>
         <div class="pub-authors">Xiangyang Luo, Ye Zhu, Yunfei Liu, Lijian Lin, <span class="me">Cong Wan</span>, Zijian Cai, Yu Li, Shao-Lun Huang</div>
@@ -398,7 +420,7 @@ footer{
 
     <!-- CIA -->
     <div class="pub">
-      <div class="pub-badge"><span class="badge b-mm">ACM MM<small>2025</small></span></div>
+      <div class="pub-thumb"><div class="ph b-mm">ACM MM<small>2025</small></div></div>
       <div class="pub-main">
         <span class="pub-title">CIA: Class- and Instance-aware Adaptation for Vision-Language Models</span>
         <div class="pub-authors">Lin Peng, <span class="me">Cong Wan</span>, Shaokun Wang, Xiang Song, Yuhang He, Yihong Gong</div>
@@ -411,7 +433,10 @@ footer{
 
     <!-- GRID -->
     <div class="pub hl">
-      <div class="pub-badge"><span class="badge b-arxiv">arXiv<small>2024</small></span></div>
+      <div class="pub-thumb">
+        <img src="images/pubs/grid.webp" alt="GRID teaser" loading="lazy" />
+        <span class="badge b-arxiv">arXiv<small>2024</small></span>
+      </div>
       <div class="pub-main">
         <span class="pub-title">GRID: Omni Visual Generation</span>
         <div class="pub-authors"><span class="me">Cong Wan</span>, Xiangyang Luo, Hao Luo, Zijian Cai, Yiren Song, Yunlong Zhao, Yifan Bai, Fan Wang, Yuhang He, Yihong Gong</div>
@@ -425,7 +450,10 @@ footer{
 
     <!-- PAP -->
     <div class="pub hl">
-      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2024</small></span></div>
+      <div class="pub-thumb">
+        <img src="images/pubs/pap.webp" alt="PAP teaser" loading="lazy" />
+        <span class="badge b-neurips">NeurIPS<small>2024</small></span>
+      </div>
       <div class="pub-main">
         <span class="pub-title">Prompt-Agnostic Adversarial Perturbation for Customized Diffusion Models</span>
         <div class="pub-authors"><span class="me">Cong Wan</span>, Yuhang He, Xiang Song, Yihong Gong</div>
@@ -439,7 +467,7 @@ footer{
 
     <!-- SDA -->
     <div class="pub">
-      <div class="pub-badge"><span class="badge b-tmm">IEEE TMM<small>2026</small></span></div>
+      <div class="pub-thumb"><div class="ph b-tmm">IEEE TMM<small>2026</small></div></div>
       <div class="pub-main">
         <span class="pub-title">SDA: Structure-aware Distribution Alignment for Vision-Language Models</span>
         <div class="pub-authors">Lin Peng, <span class="me">Cong Wan</span>, Shaokun Wang, Yuhang He, Yihong Gong</div>
