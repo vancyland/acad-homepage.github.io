@@ -2,399 +2,511 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cong Wan (万聪)</title>
+<meta name="description" content="Cong Wan (万聪) — M.S. student at Xi'an Jiaotong University, advised by Prof. Yihong Gong. Research on multimodal foundation models, world models, and embodied AI." />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Georgia', serif;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #333;
-  background: #fff;
+:root{
+  --accent:#2b5bb5;
+  --accent-soft:#eaf1fb;
+  --ink:#1a2230;
+  --muted:#5b6472;
+  --faint:#8a94a3;
+  --line:#e7eaef;
+  --bg:#ffffff;
+  --panel:#f7f8fa;
+  --radius:14px;
+  --maxw:940px;
 }
-a { color: #1772d0; text-decoration: none; }
-a:hover { text-decoration: underline; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.65;color:var(--ink);background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none;transition:color .15s ease;}
+a:hover{color:#1b3f85;}
+strong{font-weight:700;}
+
 /* ── NAV ── */
-nav {
-  position: sticky; top: 0; z-index: 99;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  display: flex; align-items: center;
-  padding: 12px 40px;
-  gap: 28px;
+nav{
+  position:sticky;top:0;z-index:99;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(180%) blur(12px);
+  -webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--line);
 }
-.nav-name {
-  font-family: Arial, sans-serif;
-  font-weight: bold; font-size: 1.05em;
-  color: #222; flex: 1;
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;
+  display:flex;align-items:center;gap:22px;
+  padding:14px 28px;
 }
-nav a {
-  font-family: Arial, sans-serif;
-  font-size: 0.9em; color: #1772d0;
+.nav-name{font-weight:800;font-size:1.02rem;letter-spacing:-.01em;color:var(--ink);margin-right:auto;}
+.nav-links{display:flex;gap:22px;flex-wrap:wrap;}
+.nav-links a{
+  font-size:.9rem;font-weight:500;color:var(--muted);position:relative;
 }
-/* ── WRAPPER ── */
-.wrap {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 36px 40px 60px;
+.nav-links a:hover{color:var(--accent);}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--accent);transition:width .2s ease;
 }
-/* ── PROFILE ── */
-.profile {
-  display: flex; gap: 40px;
-  align-items: flex-start;
-  margin-bottom: 40px;
+.nav-links a:hover::after{width:100%;}
+
+/* ── WRAP ── */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:52px 28px 40px;}
+
+/* ── HERO ── */
+.hero{display:flex;gap:44px;align-items:center;}
+.hero-photo{flex-shrink:0;}
+.hero-photo img{
+  width:186px;height:232px;object-fit:cover;border-radius:16px;display:block;
+  box-shadow:0 12px 34px rgba(20,32,64,.16);
 }
-.profile-photo {
-  flex-shrink: 0;
-  width: 160px;
+.hero-body{flex:1;min-width:0;}
+.hero-body h1{
+  font-family:'Newsreader',Georgia,serif;
+  font-size:2.6rem;font-weight:600;line-height:1.1;letter-spacing:-.015em;
+  margin-bottom:2px;
 }
-.profile-photo img {
-  width: 160px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 6px;
-  display: block;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+.hero-body .zh{font-size:1.35rem;color:var(--muted);font-weight:500;}
+.hero-tag{margin:12px 0 4px;font-size:1.02rem;color:var(--ink);font-weight:500;}
+.hero-aff{color:var(--muted);font-size:.98rem;line-height:1.5;}
+.hero-aff a{font-weight:500;}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+.links a{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.9rem;font-weight:500;color:var(--ink);
+  border:1px solid var(--line);background:#fff;
+  padding:7px 14px;border-radius:999px;
+  box-shadow:0 1px 2px rgba(20,32,64,.04);
 }
-.profile-card {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  flex: 1;
+.links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+.links svg{width:16px;height:16px;fill:currentColor;}
+
+/* ── SECTION ── */
+section{margin-top:52px;scroll-margin-top:80px;}
+.sec-head{
+  display:flex;align-items:baseline;gap:12px;margin-bottom:22px;
 }
-.profile-card h1 {
-  font-family: Arial, sans-serif;
-  font-size: 1.85em; font-weight: bold;
-  margin-bottom: 8px;
+.sec-head h2{
+  font-family:'Newsreader',Georgia,serif;
+  font-size:1.6rem;font-weight:600;letter-spacing:-.01em;color:var(--ink);
 }
-.profile-card p {
-  font-family: Arial, sans-serif;
-  font-size: 0.9em; color: #555;
-  line-height: 1.7;
+.sec-head::after{content:"";flex:1;height:1px;background:var(--line);}
+.lead{color:var(--muted);font-size:1.02rem;}
+.lead a{font-weight:500;}
+
+/* ── ABOUT ── */
+.about p{margin-bottom:14px;color:#2c3542;}
+.interests{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;
 }
-.profile-links {
-  display: flex; flex-wrap: wrap;
-  gap: 6px; margin-top: 10px;
+.interests span{
+  font-size:.86rem;font-weight:500;color:var(--accent);
+  background:var(--accent-soft);border:1px solid #d8e4f7;
+  padding:5px 12px;border-radius:999px;
 }
-.profile-links a {
-  font-family: Arial, sans-serif;
-  font-size: 0.88em;
-  border: 1px solid #1772d0;
-  padding: 2px 10px; border-radius: 3px;
+
+/* ── NEWS ── */
+.news{
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--panel);
+  max-height:230px;overflow-y:auto;padding:6px 20px;
 }
-.bio p { margin-bottom: 10px; font-size: 0.96em; }
-/* ── SECTION TITLES ── */
-h2 {
-  font-family: Arial, sans-serif;
-  font-size: 1.3em;
-  border-bottom: 2px solid #444;
-  padding-bottom: 5px;
-  margin: 40px 0 18px;
+.news-item{display:flex;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line);}
+.news-item:last-child{border-bottom:none;}
+.news-date{
+  flex-shrink:0;width:88px;font-size:.82rem;font-weight:600;color:var(--accent);
+  font-variant-numeric:tabular-nums;padding-top:1px;
 }
-/* ── PAPERS ── */
-.repr-note {
-  font-family: Arial, sans-serif;
-  font-size: 0.88em; color: #666;
-  margin-bottom: 18px;
+.news-text{font-size:.94rem;color:#2c3542;}
+.news::-webkit-scrollbar{width:8px;}
+.news::-webkit-scrollbar-thumb{background:#cfd6e0;border-radius:8px;}
+
+/* ── PUBLICATIONS ── */
+.pub{
+  display:flex;gap:20px;padding:18px;border-radius:var(--radius);
+  border:1px solid transparent;transition:background .15s ease,border-color .15s ease;
 }
-.paper { margin-bottom: 22px; }
-.paper.hl {
-  background: #fffef2;
-  border-left: 4px solid #f0a500;
-  padding: 10px 14px;
-  margin-left: -14px;
+.pub:hover{background:var(--panel);}
+.pub.hl{background:#fffdf4;border-color:#f2e3b3;}
+.pub-badge{flex-shrink:0;width:96px;text-align:center;}
+.badge{
+  display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.01em;
+  color:#fff;padding:5px 0;width:96px;border-radius:8px;line-height:1.15;
 }
-.ptitle { font-weight: bold; display: block; margin-bottom: 2px; }
-.pauthors { font-size: 0.93em; color: #444; display: block; margin-bottom: 2px; }
-.pvenue { font-size: 0.93em; display: block; margin-bottom: 4px; }
-.pvenue em { font-style: italic; }
-.pnote { font-size: 0.88em; color: #b00; font-weight: bold; }
-.plinks { font-family: Arial, sans-serif; font-size: 0.88em; }
-.plinks a { margin-right: 4px; }
-.me { font-weight: bold; text-decoration: underline; }
-/* ── INTERNSHIPS ── */
-.intern { margin-bottom: 22px; }
-.intern-row {
-  display: flex; justify-content: space-between;
-  align-items: baseline; flex-wrap: wrap; gap: 4px;
+.badge small{display:block;font-size:.68rem;font-weight:600;opacity:.9;}
+.b-cvpr{background:#1f6feb;}
+.b-neurips{background:#7048e8;}
+.b-iccv{background:#0c8599;}
+.b-mm{background:#e8590c;}
+.b-tmm{background:#495057;}
+.b-arxiv{background:#b02a37;}
+.pub-main{flex:1;min-width:0;}
+.pub-title{font-weight:700;font-size:1.03rem;line-height:1.4;color:var(--ink);display:block;margin-bottom:3px;}
+.pub-authors{font-size:.92rem;color:var(--muted);margin-bottom:5px;}
+.pub-authors .me{color:var(--ink);font-weight:700;}
+.pub-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.88rem;}
+.pub-venue{color:#3a434f;font-weight:500;}
+.pill{
+  font-size:.76rem;font-weight:700;padding:2px 9px;border-radius:999px;
 }
-.intern-place { font-weight: bold; font-size: 1em; }
-.intern-date {
-  font-family: Arial, sans-serif;
-  font-size: 0.88em; color: #555; white-space: nowrap;
+.pill-star{background:#fff4d6;color:#a9721a;border:1px solid #f0d999;}
+.pill-review{background:#eef1f5;color:#5b6472;border:1px solid #dde2e9;}
+.pub-links{margin-top:6px;font-size:.86rem;font-weight:500;display:flex;gap:14px;flex-wrap:wrap;}
+.pub-links a{display:inline-flex;align-items:center;gap:4px;}
+
+/* ── TIMELINE (exp / edu) ── */
+.tl{position:relative;padding-left:26px;}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line);}
+.tl-item{position:relative;padding-bottom:26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{
+  content:"";position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--accent);
 }
-.intern-role {
-  font-style: italic; font-size: 0.93em; color: #444;
-  margin-top: 2px;
-}
-.intern-topic { font-size: 0.93em; color: #444; margin-top: 3px; }
+.tl-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.tl-place{font-weight:700;font-size:1.02rem;color:var(--ink);}
+.tl-date{font-size:.85rem;font-weight:600;color:var(--faint);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.tl-role{font-size:.94rem;color:var(--muted);margin-top:2px;}
+.tl-role em{color:var(--accent);font-style:normal;font-weight:600;}
+.tl-topic{font-size:.9rem;color:#4a5462;margin-top:4px;}
+
 /* ── HONORS ── */
-.honor {
-  display: flex; justify-content: space-between;
-  align-items: baseline; flex-wrap: wrap;
-  gap: 8px; margin-bottom: 10px; font-size: 0.95em;
+.honor{
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:11px 0;border-bottom:1px solid var(--line);font-size:.97rem;color:#2c3542;
 }
-.honor-year {
-  font-family: Arial, sans-serif;
-  font-size: 0.9em; color: #555; white-space: nowrap;
-}
+.honor:last-child{border-bottom:none;}
+.honor-year{font-size:.85rem;font-weight:600;color:var(--faint);white-space:nowrap;font-variant-numeric:tabular-nums;}
+
 /* ── SERVICE ── */
-.service-block { margin-bottom: 16px; }
-.service-type {
-  font-family: Arial, sans-serif;
-  font-size: 0.95em; font-weight: bold;
-  margin-bottom: 4px; color: #333;
-}
+.svc{display:flex;gap:14px;padding:9px 0;font-size:.97rem;align-items:baseline;}
+.svc-role{flex-shrink:0;width:170px;font-weight:600;color:var(--ink);}
+.svc-body{color:var(--muted);}
+
 /* ── FOOTER ── */
-footer {
-  margin-top: 56px; padding-top: 16px;
-  border-top: 1px solid #eee;
-  font-family: Arial, sans-serif;
-  font-size: 0.82em; color: #bbb; text-align: center;
+footer{
+  margin-top:60px;padding:26px 0 10px;border-top:1px solid var(--line);
+  text-align:center;font-size:.84rem;color:var(--faint);
 }
+
 /* ── RESPONSIVE ── */
-@media (max-width: 640px) {
-  nav { padding: 10px 16px; gap: 14px; flex-wrap: wrap; }
-  .wrap { padding: 24px 16px 48px; }
-  .profile { flex-direction: column; gap: 20px; }
-  .profile-photo { width: 100%; }
-  .profile-photo img { width: 120px; height: 150px; }
-  .intern-row, .honor { flex-direction: column; }
-  .paper.hl { margin-left: 0; }
+@media (max-width:680px){
+  .wrap{padding:34px 20px 30px;}
+  .nav-inner{padding:12px 18px;gap:14px;}
+  .nav-name{width:100%;margin-right:0;}
+  .hero{flex-direction:column;text-align:center;gap:22px;}
+  .hero-photo img{width:150px;height:188px;margin:0 auto;}
+  .links{justify-content:center;}
+  .hero-body h1{font-size:2.1rem;}
+  .pub{flex-direction:column;gap:10px;}
+  .pub-badge{width:auto;text-align:left;}
+  .svc{flex-direction:column;gap:2px;}
+  .svc-role{width:auto;}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
+<!-- ═══════════ NAV ═══════════ -->
 <nav>
-
-  <a href="#research">Research</a>
-  <a href="#internships">Internships</a>
-  <a href="#honors">Honors</a>
-  <a href="#service">Service</a>
+  <div class="nav-inner">
+    <span class="nav-name">Cong Wan · 万聪</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#honors">Honors</a>
+      <a href="#service">Service</a>
+    </div>
+  </div>
 </nav>
 
 <div class="wrap">
 
-<!-- ═══ PROFILE ═══ -->
-<div class="profile">
-
-  <!-- 头像 -->
-  <div class="profile-photo">
-    <img src="images/humanwc.jpg" alt="Cong Wan" />
-  </div>
-
-  <!-- 右侧：姓名 + 链接（与头像并排） -->
-  <div class="profile-card">
-    <h1>Cong Wan</h1>
-    <p>M.S. Student</p>
-    <p>Xi'an Jiaotong University</p>
-    <p>Email: wancong[at]stu.xjtu.edu.cn</p>
-    <div class="profile-links">
-      <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en" target="_blank">[Google Scholar]</a>
-      <a href="https://github.com/vancyland" target="_blank">[GitHub]</a>
-      <a href="https://vancyland.github.io/cone.github.io/CV_WC.pdf" target="_blank">[cv]</a>
+  <!-- ═══════════ HERO ═══════════ -->
+  <header class="hero">
+    <div class="hero-photo">
+      <img src="images/humanwc.jpg" alt="Cong Wan" />
     </div>
-  </div>
-
-</div>
-
-<!-- Biography 独立在下方，全宽 -->
-<h2 id="biography">Biography</h2>
-<div class="bio">
-  <p>
-    I am a M.S. student in Computer Science and Technology at the School of Software Engineering,
-    <a href="https://www.xjtu.edu.cn/">Xi'an Jiaotong University (XJTU)</a>,
-    advised by Prof. <a href="https://scholar.google.com/citations?user=x2xdU7gAAAAJ&hl=en">Yihong Gong</a>.
-    I received my B.S. degree in Mathematics from the School of Mathematics and Statistics, XJTU in 2024.
-    I am currently a Research Intern at <strong>ByteDance Seed</strong>,
-    working on VLM pretraining and unified VLA model.
-    Previously, I was a Research Intern at Alibaba DAMO Academy, Microsoft Research Asia (MSRA),
-    and ByteDance.
-  </p>
-  <p>
-    Most of my previous research focuses on vision foundation models, spanning model design,
-    large-scale pretraining, dataset collection, and benchmark evaluation.
-    Currently, I am dedicated to advancing the <strong>intelligence</strong> of unified multimodal models —
-    pushing them to perceive, reason, and act more like genuinely intelligent systems.
-  </p>
-</div>
-
-
-
-  <!-- ═══ RESEARCH ═══ -->
-  <h2 id="research">Research</h2>
-  <p class="repr-note">
-    Representative papers are <strong>highlighted</strong>.
-    The full paper list can be found on
-    <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en" target="_blank">Google Scholar</a>.
-  </p>
-
-  <!-- ReMoT -->
-  <div class="paper hl">
-    <span class="ptitle">ReMoT: Reinforcement Learning with Motion Contrast Triplets</span>
-    <span class="pauthors">
-      <span class="me">C. Wan</span>, Z. Guo, J. Li, S. L. Dong, Y. Bai, L. Peng, Z. Ma, Y. Gong.
-    </span>
-    <span class="pvenue">
-      <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>
-      (<strong>CVPR</strong>), 2026.
-    </span>
-    <div class="plinks">
-      [<a href="https://arxiv.org/pdf/2603.00461">Paper</a>]
-      &nbsp;[<a href="#">Code</a>]
+    <div class="hero-body">
+      <h1>Cong Wan <span class="zh">(万聪)</span></h1>
+      <p class="hero-tag">M.S. Student · Research Intern @ ByteDance Seed</p>
+      <p class="hero-aff">
+        Ma-Chao Institute of Vision (MIV) Lab,
+        <a href="https://www.xjtu.edu.cn/" target="_blank">Xi'an Jiaotong University</a><br/>
+        Advised by Prof. <a href="https://scholar.google.com/citations?user=x2xdU7gAAAAJ&hl=en" target="_blank">Yihong Gong</a>
+        &nbsp;·&nbsp; wancong<span aria-hidden="true">&#8203;</span>[at]stu.xjtu.edu.cn
+      </p>
+      <div class="links">
+        <a href="mailto:wancong@stu.xjtu.edu.cn">
+          <svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm10 7L3.5 6h17L12 11zm0 2L2 6.2V20h20V6.2L12 13z"/></svg>Email
+        </a>
+        <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2 1 8l11 6 9-4.9V17h2V8L12 2zM6 13.2V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.8l-6 3.3-6-3.3z"/></svg>Google Scholar
+        </a>
+        <a href="https://github.com/vancyland" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>GitHub
+        </a>
+        <a href="https://vancyland.github.io/cone.github.io/CV_WC.pdf" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2zm8 1.5V8h4.5L14 3.5zM8 12h8v1.6H8V12zm0 3.4h8V17H8v-1.6zm0-6.8h4v1.6H8V8.6z"/></svg>CV
+        </a>
+      </div>
     </div>
-  </div>
+  </header>
 
-<!-- VLN -->
-<div class="paper">
-  <span class="ptitle">Trajectory-Diversity-Driven Robust Vision-and-Language Navigation</span>
-  <span class="pauthors">
-    J. Li, <span class="me">C. Wan</span>, S. Dong, C. Ding, Q. Wang, Z. Ma, Y. Gong.
-  </span>
-  <span class="pvenue">
-    <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>
-    (<strong>CVPR</strong>) Findings, 2026.
-  </span>
-  <div class="plinks">
-    [<a href="#">Paper</a>]
-    &nbsp;[<a href="#">Code</a>]
-  </div>
-</div>
-
-  <!-- GRID -->
-  <div class="paper hl">
-    <span class="ptitle">GRID: Omni Visual Generation</span>
-    <span class="pauthors">
-      <span class="me">C. Wan</span>, X. Luo, Z. Cai, Y. Song, Y. Zhao, Y. Bai, Y. He, Y. Gong.
-    </span>
-    <span class="pvenue">
-      <em>arXiv preprint</em>, 2025. <em></em>
-    </span>
-    <div class="plinks">
-      [<a href="https://arxiv.org/abs/2412.10718">arXiv</a>]
-      &nbsp;[<a href="https://github.com/Should-AI-Lab/GRID">Code</a>]
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section id="about">
+    <div class="sec-head"><h2>About</h2></div>
+    <div class="about">
+      <p>
+        I am an M.S. student in Computer Science and Technology at
+        <a href="https://www.xjtu.edu.cn/" target="_blank">Xi'an Jiaotong University (XJTU)</a>,
+        advised by Prof. <a href="https://scholar.google.com/citations?user=x2xdU7gAAAAJ&hl=en" target="_blank">Yihong Gong</a>.
+        I received my B.S. in Mathematics from XJTU in 2024.
+        I am currently a Research Intern at <strong>ByteDance Seed</strong> (led by Chang Zhou),
+        working on foundation models and embodied AI. Previously I interned at
+        <strong>Microsoft Research Asia</strong> (world models) and
+        <strong>Alibaba DAMO Academy</strong> (unified visual generation).
+      </p>
+      <p>
+        My research centers on <strong>multimodal foundation models</strong> — spanning model design,
+        large-scale pre-training, data construction, and benchmark evaluation. I am especially interested in
+        advancing the <strong>intelligence</strong> of unified multimodal models, so they can perceive, reason,
+        and act more like genuinely intelligent systems.
+      </p>
+      <div class="interests">
+        <span>Multimodal Foundation Models</span>
+        <span>World Models</span>
+        <span>Embodied AI / VLA</span>
+        <span>Visual Generation</span>
+        <span>Reinforcement Learning</span>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- PAP -->
-  <div class="paper">
-    <span class="ptitle">Prompt-Agnostic Adversarial Perturbation for Customized Diffusion Models</span>
-    <span class="pauthors">
-      <span class="me">C. Wan</span>, Y. He, X. Song, Y. Gong.
-    </span>
-    <span class="pvenue">
-      <em>Conference on Neural Information Processing Systems</em>
-      (<strong>NeurIPS</strong>), 2024.
-    </span>
-    <div class="plinks">
-      [<a href="https://arxiv.org/abs/2408.10571">arXiv</a>]
-      &nbsp;[<a href="https://github.com/vancyland/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io">Code</a>]
+  <!-- ═══════════ NEWS ═══════════ -->
+  <section id="news">
+    <div class="sec-head"><h2>News</h2></div>
+    <div class="news">
+      <div class="news-item"><div class="news-date">Jun 2026</div><div class="news-text"><strong>DataClaw</strong> preprint is on <a href="https://arxiv.org/abs/2606.21337" target="_blank">arXiv</a> — agentic tailoring of multimodal data from raw streams. (<a href="https://czjdsg.github.io/MakeAnyData/" target="_blank">project page</a>)</div></div>
+      <div class="news-item"><div class="news-date">May 2026</div><div class="news-text">Four papers — <strong>DataClaw</strong>, <strong>WorldCanvas</strong>, ProSR, and Retrieve-then-Steer — under review at <strong>NeurIPS 2026</strong>.</div></div>
+      <div class="news-item"><div class="news-date">Feb 2026</div><div class="news-text"><strong>ReMoT</strong> accepted to <strong>CVPR 2026</strong> as a <strong>Highlight</strong> (Top 3.8%).</div></div>
+      <div class="news-item"><div class="news-date">Nov 2025</div><div class="news-text">Started as a Research Intern at <strong>ByteDance Seed</strong>, working on foundation models &amp; embodied AI.</div></div>
+      <div class="news-item"><div class="news-date">Jun 2025</div><div class="news-text">Joined the Machine Learning Group at <strong>Microsoft Research Asia</strong> as a Research Intern (world models).</div></div>
+      <div class="news-item"><div class="news-date">Sep 2024</div><div class="news-text">Started my M.S. at XJTU; <strong>PAP</strong> accepted to <strong>NeurIPS 2024</strong>.</div></div>
     </div>
-  </div>
+  </section>
 
-  <!-- CanonSwap -->
-  <div class="paper">
-    <span class="ptitle">CanonSwap: High-Fidelity and Consistent Video Face Swapping via Canonical Space Modulation</span>
-    <span class="pauthors">
-      X. Luo, Y. Zhu, Y. Liu, L. Lin, <span class="me">C. Wan</span>, Z. Cai, S. L. Huang, Y. Li.
-    </span>
-    <span class="pvenue">
-      <em>IEEE/CVF International Conference on Computer Vision</em>
-      (<strong>ICCV</strong>), 2025.
-    </span>
-    <div class="plinks">
-      [<a href="https://arxiv.org/abs/2507.02691">arXiv</a>]
-      &nbsp;[<a href="https://github.com/Pixel-Talk/CanonSwap">Code</a>]
+  <!-- ═══════════ PUBLICATIONS ═══════════ -->
+  <section id="publications">
+    <div class="sec-head"><h2>Publications</h2></div>
+    <p class="lead" style="margin-bottom:20px;">
+      <span style="color:#a9721a;font-weight:600;">★</span> denotes representative (first-author) work.
+      Full list on <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en" target="_blank">Google Scholar</a>.
+    </p>
+
+    <!-- DataClaw -->
+    <div class="pub hl">
+      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2026</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">DataClaw: Agentic Tailoring Multimodal Data from Raw Streams</span>
+        <div class="pub-authors"><span class="me">Cong Wan</span>, Zeyu Guo, Zijian Cai, Jiangyang Li, SongLin Dong, Lin Peng, Xiangyang Luo, Zhiheng Ma, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">NeurIPS 2026</span><span class="pill pill-review">Under review</span><span class="pill pill-star">★ Representative</span></div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2606.21337" target="_blank">arXiv</a>
+          <a href="https://czjdsg.github.io/MakeAnyData/" target="_blank">Project</a>
+          <a href="https://github.com/vancyland/DataClaw0" target="_blank">Code</a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- CIA -->
-  <div class="paper">
-    <span class="ptitle">CIA: Class-and Instance-aware Adaptation for Vision-Language Models</span>
-    <span class="pauthors">
-      L. Peng, <span class="me">C. Wan</span>, S. Wang, X. Song, Y. He, Y. Gong.
-    </span>
-    <span class="pvenue">
-      <em>ACM International Conference on Multimedia</em>
-      (<strong>MM</strong>), 2025, pp. 2870–2879.
-    </span>
-    <div class="plinks">
-      [<a href="https://dl.acm.org/doi/abs/10.1145/3746027.3754846">Paper</a>]
+    <!-- WorldCanvas -->
+    <div class="pub hl">
+      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2026</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">WorldCanvas: Context-Guided Embodied Video Synthesis with a Unified Visual Canvas</span>
+        <div class="pub-authors"><span class="me">Cong Wan</span>, Jingzhou You, SongLin Dong, Kailai Chen, Zhiheng Ma, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">NeurIPS 2026</span><span class="pill pill-review">Under review</span><span class="pill pill-star">★ Representative</span></div>
+      </div>
     </div>
-  </div>
 
-  <!-- ═══ INTERNSHIPS ═══ -->
-  <h2 id="internships">Internships</h2>
-
-  <div class="intern">
-    <div class="intern-row">
-      <span class="intern-place">ByteDance Seed</span>
-      <span class="intern-date">Nov. 2025 – Mar. 2026</span>
+    <!-- ReMoT -->
+    <div class="pub hl">
+      <div class="pub-badge"><span class="badge b-cvpr">CVPR<small>2026</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">ReMoT: Reinforcement Learning with Motion Contrast Triplets</span>
+        <div class="pub-authors"><span class="me">Cong Wan</span>, Zeyu Guo, Jiangyang Li, SongLin Dong, Yifan Bai, Lin Peng, Zhiheng Ma, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">CVPR 2026</span><span class="pill pill-star">★ Highlight · Top 3.8%</span></div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/pdf/2603.00461" target="_blank">arXiv</a>
+        </div>
+      </div>
     </div>
-    <div class="intern-role">Multimodal Algorithm Research Intern</div>
-    <div class="intern-topic">
-      <strong>Topic:</strong> VLM Pretraining;
-      Unified VLA World Model; Interleaved Image-Text Reasoning for Robot Manipulation
+
+    <!-- ProSR -->
+    <div class="pub">
+      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2026</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">ProSR: Process-Shaped Spatial Reasoning for Reliable Chain-of-Thought in VLMs</span>
+        <div class="pub-authors">Jiangyang Li, <span class="me">Cong Wan</span>, Changjie Wu, SongLin Dong, Lingjun Zhang, Linzhe Shi, Xu Wang, Zhiheng Ma, Hang Zhang, Mu Xu, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">NeurIPS 2026</span><span class="pill pill-review">Under review</span></div>
+      </div>
     </div>
-  </div>
 
-  <div class="intern">
-    <div class="intern-row">
-      <span class="intern-place">Machine Learning Group, Microsoft Research Asia (MSRA)</span>
-      <span class="intern-date">Jun. 2025 – Oct. 2025</span>
+    <!-- Retrieve-then-Steer -->
+    <div class="pub">
+      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2026</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">Retrieve-then-Steer: Online Success Memory for Test-Time Adaptation of Generative VLAs</span>
+        <div class="pub-authors">Jianchao Zhao, Huoren Yang, Yusong Hu, Yuyang Gao, Qiguan Ou, <span class="me">Cong Wan</span>, SongLin Dong, Zhiheng Ma, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">NeurIPS 2026</span><span class="pill pill-review">Under review</span></div>
+      </div>
     </div>
-    <div class="intern-role">World Model Algorithm Research Intern</div>
-    <div class="intern-topic">
-      <strong>Topic:</strong> Voxel-based World Model; Dynamic Scene Consistency
+
+    <!-- VLN -->
+    <div class="pub">
+      <div class="pub-badge"><span class="badge b-cvpr">CVPR<small>2026</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">Trajectory-Diversity-Driven Robust Vision-and-Language Navigation</span>
+        <div class="pub-authors">Jiangyang Li, <span class="me">Cong Wan</span>, SongLin Dong, Chenhao Ding, Qiang Wang, Zhiheng Ma, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">CVPR 2026 Findings</span></div>
+      </div>
     </div>
-  </div>
 
-  <div class="intern">
-    <div class="intern-row">
-      <span class="intern-place">Alibaba DAMO Academy</span>
-      <span class="intern-date">Dec. 2024 – Jun. 2025</span>
+    <!-- CanonSwap -->
+    <div class="pub">
+      <div class="pub-badge"><span class="badge b-iccv">ICCV<small>2025</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">CanonSwap: High-Fidelity and Consistent Video Face Swapping via Canonical Space Modulation</span>
+        <div class="pub-authors">Xiangyang Luo, Ye Zhu, Yunfei Liu, Lijian Lin, <span class="me">Cong Wan</span>, Zijian Cai, Yu Li, Shao-Lun Huang</div>
+        <div class="pub-meta"><span class="pub-venue">ICCV 2025</span></div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2507.02691" target="_blank">arXiv</a>
+          <a href="https://github.com/Pixel-Talk/CanonSwap" target="_blank">Code</a>
+        </div>
+      </div>
     </div>
-    <div class="intern-role">AIGC Algorithm Research Intern</div>
-    <div class="intern-topic">
-      <strong>Topic:</strong> Unified Visual Generation (GRID); LuminaData/XunguangEdit Dataset Construction
+
+    <!-- CIA -->
+    <div class="pub">
+      <div class="pub-badge"><span class="badge b-mm">ACM MM<small>2025</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">CIA: Class- and Instance-aware Adaptation for Vision-Language Models</span>
+        <div class="pub-authors">Lin Peng, <span class="me">Cong Wan</span>, Shaokun Wang, Xiang Song, Yuhang He, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">ACM Multimedia (MM) 2025</span></div>
+        <div class="pub-links">
+          <a href="https://dl.acm.org/doi/abs/10.1145/3746027.3754846" target="_blank">Paper</a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- ═══ HONORS ═══ -->
-  <h2 id="honors">Honors</h2>
-
-  <div class="honor">
-    <span>National Scholarship for Graduate Students (Top 1%), Xi'an Jiaotong University</span>
-    <span class="honor-year">2024</span>
-  </div>
-  <div class="honor">
-    <span>Outstanding Student Award, Xi'an Jiaotong University</span>
-    <span class="honor-year">2024</span>
-  </div>
-
-  <!-- ═══ SERVICE ═══ -->
-  <h2 id="service">Service</h2>
-
-  <div class="service-block">
-    <div class="service-type">Conference Reviewer</div>
-    <div class="honor">
-      <span>Neural Information Processing Systems (NeurIPS)</span>
-      <span class="honor-year">2025</span>
+    <!-- GRID -->
+    <div class="pub hl">
+      <div class="pub-badge"><span class="badge b-arxiv">arXiv<small>2024</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">GRID: Omni Visual Generation</span>
+        <div class="pub-authors"><span class="me">Cong Wan</span>, Xiangyang Luo, Hao Luo, Zijian Cai, Yiren Song, Yunlong Zhao, Yifan Bai, Fan Wang, Yuhang He, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">arXiv preprint</span><span class="pill pill-star">★ Representative</span></div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2412.10718" target="_blank">arXiv</a>
+          <a href="https://github.com/Should-AI-Lab/GRID" target="_blank">Code</a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="service-block">
-    <div class="service-type">Journal Reviewer</div>
-    <div class="honor">
-      <span>IEEE Transactions on Multimedia (TMM)</span>
-      <span class="honor-year">2025</span>
+    <!-- PAP -->
+    <div class="pub hl">
+      <div class="pub-badge"><span class="badge b-neurips">NeurIPS<small>2024</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">Prompt-Agnostic Adversarial Perturbation for Customized Diffusion Models</span>
+        <div class="pub-authors"><span class="me">Cong Wan</span>, Yuhang He, Xiang Song, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">NeurIPS 2024</span><span class="pill pill-star">★ Representative</span></div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2408.10571" target="_blank">arXiv</a>
+          <a href="https://github.com/vancyland/Prompt-Agnostic-Adversarial-Perturbation-for-Customized-Diffusion-Models.github.io" target="_blank">Code</a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <footer>© Cong Wan &nbsp;|&nbsp; Last updated: Mar. 2026</footer>
+    <!-- SDA -->
+    <div class="pub">
+      <div class="pub-badge"><span class="badge b-tmm">IEEE TMM<small>2026</small></span></div>
+      <div class="pub-main">
+        <span class="pub-title">SDA: Structure-aware Distribution Alignment for Vision-Language Models</span>
+        <div class="pub-authors">Lin Peng, <span class="me">Cong Wan</span>, Shaokun Wang, Yuhang He, Yihong Gong</div>
+        <div class="pub-meta"><span class="pub-venue">IEEE Transactions on Multimedia (TMM) 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ EXPERIENCE ═══════════ -->
+  <section id="experience">
+    <div class="sec-head"><h2>Experience</h2></div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-place">ByteDance Seed</span><span class="tl-date">Nov 2025 – Present</span></div>
+        <div class="tl-role">Research Intern · <em>Foundation Model, Embodied AI</em> · Beijing · Led by Chang Zhou</div>
+        <div class="tl-topic">VLM pre-training; unified VLA world model; interleaved image-text reasoning for robot manipulation.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-place">Machine Learning Group, Microsoft Research Asia (MSRA)</span><span class="tl-date">Jun 2025 – Nov 2025</span></div>
+        <div class="tl-role">Research Intern · <em>World Model</em> · Beijing · Led by Li Zhao</div>
+        <div class="tl-topic">Voxel-based world models; dynamic scene consistency.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-place">Alibaba DAMO Academy</span><span class="tl-date">Dec 2024 – Jun 2025</span></div>
+        <div class="tl-role">Research Intern · <em>AIGC, Unified Model</em> · Hangzhou · Led by Hao Luo</div>
+        <div class="tl-topic">Unified visual generation (GRID); large-scale generation/editing dataset construction.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ EDUCATION ═══════════ -->
+  <section id="education">
+    <div class="sec-head"><h2>Education</h2></div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-place">Xi'an Jiaotong University</span><span class="tl-date">2024 – 2027</span></div>
+        <div class="tl-role">M.S. in Computer Science and Technology · <em>Advised by Prof. Yihong Gong</em></div>
+        <div class="tl-topic">MIV Lab · Foundation Models, Reinforcement Learning, World Models.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-place">Xi'an Jiaotong University</span><span class="tl-date">2020 – 2024</span></div>
+        <div class="tl-role">B.S. in Mathematics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ HONORS ═══════════ -->
+  <section id="honors">
+    <div class="sec-head"><h2>Honors &amp; Awards</h2></div>
+    <div class="honor"><span>National Scholarship</span><span class="honor-year">Graduate</span></div>
+    <div class="honor"><span>Special-Class Scholarship, Xi'an Jiaotong University</span><span class="honor-year">—</span></div>
+    <div class="honor"><span>Outstanding Undergraduate</span><span class="honor-year">2024</span></div>
+    <div class="honor"><span>National Postgraduate Mathematical Modeling Competition — Second Prize</span><span class="honor-year">—</span></div>
+    <div class="honor"><span>National Undergraduate Mathematics Competition — Second Prize</span><span class="honor-year">—</span></div>
+    <div class="honor"><span>Mathematical Contest in Modeling (MCM) — Meritorious Winner</span><span class="honor-year">—</span></div>
+    <div class="honor"><span>National High School Mathematics League — Second Prize</span><span class="honor-year">—</span></div>
+  </section>
+
+  <!-- ═══════════ SERVICE ═══════════ -->
+  <section id="service">
+    <div class="sec-head"><h2>Academic Service</h2></div>
+    <div class="svc"><span class="svc-role">Conference Reviewer</span><span class="svc-body">NeurIPS</span></div>
+    <div class="svc"><span class="svc-role">Journal Reviewer</span><span class="svc-body">IEEE Transactions on Multimedia (TMM)</span></div>
+  </section>
+
+  <footer>© Cong Wan (万聪) · Last updated Jul 2026 · Built as a static page hosted on GitHub Pages.</footer>
+
 </div>
 </body>
 </html>
