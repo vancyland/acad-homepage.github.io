@@ -136,12 +136,6 @@ section{margin-top:52px;scroll-margin-top:80px;}
 }
 .pub:hover{background:var(--panel);}
 .pub.hl{background:#fffdf4;border-color:#f2e3b3;}
-.pub.feat{flex-direction:column;gap:12px;}
-.feat-banner{
-  display:block;width:100%;max-width:540px;border-radius:12px;margin-top:6px;
-  border:1px solid var(--line);box-shadow:0 4px 16px rgba(20,32,64,.10);
-}
-.feat-cap{font-size:.82rem;color:var(--faint);margin-top:6px;max-width:540px;}
 .pub-thumb{flex-shrink:0;width:172px;display:flex;flex-direction:column;gap:8px;}
 .pub-thumb img{
   width:172px;height:114px;object-fit:cover;border-radius:10px;
@@ -334,7 +328,11 @@ footer{
     </p>
 
     <!-- DataClaw -->
-    <div class="pub hl feat">
+    <div class="pub hl">
+      <div class="pub-thumb">
+        <img src="images/pubs/dataclaw.webp" alt="DataClaw demos across six domains" loading="lazy" />
+        <span class="badge b-neurips">NeurIPS<small>2026</small></span>
+      </div>
       <div class="pub-main">
         <span class="pub-title">DataClaw: Agentic Tailoring Multimodal Data from Raw Streams</span>
         <div class="pub-authors"><span class="me">Cong Wan</span>, Zeyu Guo, Zijian Cai, Jiangyang Li, SongLin Dong, Lin Peng, Xiangyang Luo, Zhiheng Ma, Yihong Gong</div>
@@ -345,10 +343,6 @@ footer{
           <a href="https://github.com/vancyland/DataClaw0" target="_blank">Code</a>
         </div>
       </div>
-      <a href="https://czjdsg.github.io/MakeAnyData/" target="_blank" aria-label="DataClaw demos">
-        <img class="feat-banner" src="images/pubs/dataclaw_feature.webp" alt="DataClaw: six domain demos playing simultaneously" loading="lazy" />
-      </a>
-      <div class="feat-cap">Real DataClaw demos across six domains.</div>
     </div>
 
     <!-- WorldCanvas -->
