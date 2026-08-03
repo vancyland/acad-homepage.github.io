@@ -313,6 +313,9 @@ footer{
         <a href="https://vancyland.github.io/cone.github.io/CV_WC.pdf" target="_blank">
           <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2zm8 1.5V8h4.5L14 3.5zM8 12h8v1.6H8V12zm0 3.4h8V17H8v-1.6zm0-6.8h4v1.6H8V8.6z"/></svg>CV
         </a>
+        <a href="#" id="reportLink" title="Private · passcode required">
+          <svg viewBox="0 0 24 24"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zM9 7a3 3 0 0 1 6 0v2H9V7zm3 7a1.6 1.6 0 0 1 .9 2.9V19h-1.8v-2.1A1.6 1.6 0 0 1 12 14z"/></svg>Report
+        </a>
       </div>
     </div>
   </header>
@@ -680,6 +683,24 @@ footer{
       document.getElementById('cntViews').textContent = fmt(v);
       document.getElementById('viewsLine').style.display = 'inline';
     }
+  });
+
+  // 受口令保护的 Report 链接：真实路径由口令的 SHA-256 推导，不出现在页面源码中
+  document.getElementById('reportLink').addEventListener('click', function(ev){
+    ev.preventDefault();
+    var pw = window.prompt('访问口令 / Passcode');
+    if(!pw) return;
+    var enc = new TextEncoder().encode(pw.trim());
+    crypto.subtle.digest('SHA-256', enc).then(function(buf){
+      var hex = Array.prototype.map.call(new Uint8Array(buf), function(b){
+        return ('0' + b.toString(16)).slice(-2);
+      }).join('');
+      var path = 'report-' + hex.slice(0, 10) + '/';
+      return fetch(path, {method:'HEAD'}).then(function(r){
+        if(r.ok){ window.location.href = path; }
+        else { toast('口令不正确'); }
+      });
+    }).catch(function(){ toast('口令不正确'); });
   });
 })();
 </script>
