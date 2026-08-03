@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /report-2a7f91c4/

@@ -58,6 +58,36 @@ nav{
 }
 .nav-links a:hover::after{width:100%;}
 
+/* ── NAV ACTIONS (like / save) ── */
+.nav-actions{display:flex;gap:9px;margin-left:20px;}
+.act{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  border:1px solid var(--line);background:#fff;border-radius:999px;
+  padding:5px 13px;font-size:.85rem;font-weight:600;color:var(--muted);
+  font-family:inherit;line-height:1.2;
+  transition:border-color .18s ease,color .18s ease,background .18s ease,transform .12s ease;
+}
+.act:hover{border-color:#c9d3e4;color:var(--ink);background:#fbfcfe;}
+.act:active{transform:scale(.94);}
+.act svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;
+         stroke-linecap:round;stroke-linejoin:round;transition:fill .18s ease;}
+.act .cnt{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink);min-width:8px;}
+.act.on{background:#fff1f2;border-color:#f7c6cc;color:#d43f52;}
+.act.on .cnt{color:#d43f52;}
+.act.on svg{fill:#e0495c;stroke:#e0495c;}
+.act.save.on{background:#fff8e8;border-color:#f2ddaa;color:#a9750d;}
+.act.save.on .cnt{color:#a9750d;}
+.act.save.on svg{fill:#eab308;stroke:#eab308;}
+@keyframes pop{0%{transform:scale(1);}45%{transform:scale(1.28);}100%{transform:scale(1);}}
+.act.pop svg{animation:pop .42s ease;}
+#toast{
+  position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(14px);
+  background:rgba(20,26,38,.94);color:#fff;font-size:.88rem;font-weight:500;
+  padding:10px 18px;border-radius:10px;z-index:999;opacity:0;pointer-events:none;
+  transition:opacity .25s ease,transform .25s ease;box-shadow:0 8px 26px rgba(0,0,0,.22);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
 /* ── WRAP ── */
 .wrap{max-width:var(--maxw);margin:0 auto;padding:52px 28px 40px;}
 
@@ -240,8 +270,19 @@ footer{
       <a href="#honors">Honors</a>
       <a href="#service">Service</a>
     </div>
+    <div class="nav-actions">
+      <button class="act like" id="btnLike" type="button" title="点个赞 / Like this page">
+        <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <span class="cnt" id="cntLike">–</span>
+      </button>
+      <button class="act save" id="btnSave" type="button" title="收藏 / Save">
+        <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9L12 2.6z"/></svg>
+        <span class="cnt" id="cntSave">–</span>
+      </button>
+    </div>
   </div>
 </nav>
+<div id="toast"></div>
 
 <div class="wrap">
 
@@ -584,8 +625,63 @@ footer{
     <div class="svc"><span class="svc-role">Journal Reviewer</span><span class="svc-body">IEEE Transactions on Multimedia (TMM)</span></div>
   </section>
 
-  <footer>© Cong Wan (万聪) · Last updated Jul 2026 · Built as a static page hosted on GitHub Pages.</footer>
+  <footer>© Cong Wan (万聪) · Last updated Jul 2026 · Built as a static page hosted on GitHub Pages.
+    <span id="viewsLine" style="display:none;">&nbsp;·&nbsp;<span id="cntViews">–</span> visits</span>
+  </footer>
 
 </div>
+
+<script>
+(function(){
+  var API = 'https://abacus.jasoncameron.dev';
+  var NS  = 'vancyland.github.io';
+
+  function toast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+  }
+  function fmt(n){ return n >= 1000 ? (n/1000).toFixed(1).replace(/\.0$/,'') + 'k' : String(n); }
+
+  function call(path, cb){
+    fetch(API + path)
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){ cb(j && typeof j.value === 'number' ? j.value : null); })
+      .catch(function(){ cb(null); });
+  }
+
+  function setup(btnId, cntId, key, storeKey, doneMsg, againMsg){
+    var btn = document.getElementById(btnId), el = document.getElementById(cntId);
+    var done = localStorage.getItem(storeKey) === '1';
+    if(done) btn.classList.add('on');
+
+    call('/get/' + NS + '/' + key, function(v){ el.textContent = v === null ? '0' : fmt(v); });
+
+    btn.addEventListener('click', function(){
+      if(localStorage.getItem(storeKey) === '1'){ toast(againMsg); return; }
+      localStorage.setItem(storeKey, '1');
+      btn.classList.add('on', 'pop');
+      setTimeout(function(){ btn.classList.remove('pop'); }, 460);
+      var shown = parseInt((el.textContent || '0').replace(/[^\d]/g, ''), 10) || 0;
+      el.textContent = fmt(shown + 1);
+      call('/hit/' + NS + '/' + key, function(v){ if(v !== null) el.textContent = fmt(v); });
+      toast(doneMsg);
+    });
+  }
+
+  setup('btnLike','cntLike','like','cw_liked',
+        '谢谢你的赞 ❤', '你已经点过赞啦 ❤');
+  setup('btnSave','cntSave','star','cw_saved',
+        '已收藏 ★ 按 ' + (navigator.platform.indexOf('Mac') > -1 ? '⌘' : 'Ctrl') + '+D 加入浏览器书签',
+        '你已经收藏过啦 ★');
+
+  call('/hit/' + NS + '/views', function(v){
+    if(v !== null){
+      document.getElementById('cntViews').textContent = fmt(v);
+      document.getElementById('viewsLine').style.display = 'inline';
+    }
+  });
+})();
+</script>
 </body>
 </html>

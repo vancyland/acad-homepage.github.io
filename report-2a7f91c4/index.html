@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>万聪 · 研究工作讲解</title>
+<style>
+  :root{
+    --ink:#12161d; --muted:#5c6470; --faint:#8b94a1;
+    --line:#e3e8f0; --bg:#ffffff; --panel:#f6f8fb;
+    --accent:#3355ff; --accent2:#7b3ff2; --ok:#0f9d58; --warn:#e8342a;
+    --maxw:1260px; --navh:52px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--navh);}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",Inter,sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent);text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:50;height:var(--navh);background:rgba(255,255,255,.92);
+      backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  nav .wrap{height:100%;display:flex;align-items:center;gap:22px;}
+  nav .me{font-weight:800;font-size:.98rem;}
+  nav a{font-size:.88rem;color:var(--muted);font-weight:600;}
+  nav a:hover{color:var(--accent);}
+  nav .spacer{flex:1;}
+  nav .now{background:var(--accent);color:#fff !important;padding:4px 12px;border-radius:20px;font-size:.82rem;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:radial-gradient(1200px 520px at 12% -10%,#4a6bff 0%,transparent 55%),
+               radial-gradient(900px 520px at 100% 0%,#8b3ff2 0%,transparent 50%),
+               linear-gradient(135deg,#161b2e 0%,#0d1020 100%);}
+  .hero .wrap{padding:52px 28px 44px;}
+  .eyebrow{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#a9b6ff;font-weight:600;}
+  .hero h1{font-size:2.9rem;font-weight:800;letter-spacing:.5px;margin:10px 0 6px;}
+  .hero h1 small{font-size:1.15rem;font-weight:500;color:#c7cffc;margin-left:8px;}
+  .hero .role{font-size:1.04rem;color:#dbe1ff;font-weight:500;}
+  .hero .lead{margin-top:16px;max-width:880px;font-size:1.12rem;color:#eef1ff;line-height:1.78;}
+  .hero .lead b{color:#fff;}
+
+  /* map of 3 lines */
+  .map{display:grid;grid-template-columns:repeat(3,1fr) 1.15fr;gap:12px;margin-top:30px;}
+  .map .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+            border-radius:14px;padding:14px 16px;}
+  .map .box.hi{background:linear-gradient(135deg,rgba(51,85,255,.5),rgba(123,63,242,.42));
+               border-color:rgba(170,190,255,.5);}
+  .map .t{font-size:.74rem;letter-spacing:.14em;color:#a9b6ff;font-weight:700;}
+  .map .n{font-size:1.1rem;font-weight:800;color:#fff;margin:3px 0 4px;}
+  .map .d{font-size:.84rem;color:#c9d1f7;line-height:1.5;}
+
+  /* ---------- CHAPTER ---------- */
+  .chapter{padding:8px 0 0;}
+  .ch-head{padding:46px 0 26px;border-top:1px solid var(--line);margin-top:20px;}
+  .ch-head .no{font-size:.8rem;letter-spacing:.2em;font-weight:800;color:var(--accent);}
+  .ch-head h2{font-size:2rem;font-weight:800;letter-spacing:.4px;margin:4px 0 8px;}
+  .ch-head h2 .en{font-size:.95rem;font-weight:600;color:var(--faint);letter-spacing:.08em;margin-left:10px;}
+  .ch-head .sum{color:var(--muted);font-size:1.04rem;max-width:900px;}
+  .ch-flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px;
+           background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:12px 16px;}
+  .ch-flow .s{font-size:.9rem;font-weight:700;}
+  .ch-flow .y{color:var(--faint);font-weight:500;font-size:.8rem;}
+  .ch-flow .a{color:var(--accent);font-weight:800;}
+
+  /* ---------- WORK ---------- */
+  .work{margin:0 0 46px;}
+  .w-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+          border-left:5px solid var(--accent);padding-left:15px;margin-bottom:14px;}
+  .w-head .num{font-size:.95rem;font-weight:800;color:var(--accent);}
+  .w-head h3{font-size:1.55rem;font-weight:800;}
+  .w-head .org{font-size:.86rem;color:var(--faint);font-weight:600;background:var(--panel);
+                border:1px solid var(--line);padding:2px 10px;border-radius:20px;}
+  .w-sub{color:var(--muted);font-size:1rem;margin:-6px 0 16px 20px;}
+
+  .pts{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:14px;margin-bottom:20px;}
+  .pt{border:1px solid var(--line);border-radius:13px;padding:13px 16px;background:#fff;}
+  .pt .l{font-size:.76rem;font-weight:800;letter-spacing:.1em;margin-bottom:4px;}
+  .pt.p{background:#fff7f6;border-color:#ffdad5;} .pt.p .l{color:var(--warn);}
+  .pt.a{background:#f5f7ff;border-color:#d9e0ff;} .pt.a .l{color:var(--accent);}
+  .pt.h{background:#f3fbf6;border-color:#cdebd9;} .pt.h .l{color:var(--ok);}
+  .pt .x{font-size:.93rem;color:#242a34;}
+  .pt.h .x{font-weight:600;}
+
+  /* ---------- GALLERY (媒体是主角) ---------- */
+  .gal{display:grid;gap:16px;margin:18px 0 6px;}
+  .g1{grid-template-columns:1fr;}
+  .g2{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .fig{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#fff;}
+  .fig img{width:100%;height:auto;display:block;background:#f2f4f8;}
+  .fig video{width:100%;display:block;background:#0d1020;aspect-ratio:16/9;object-fit:contain;}
+  .fig.dark img,.fig.dark video{background:#0d1020;}
+  .fig figcaption{font-size:.85rem;color:var(--muted);padding:9px 13px;border-top:1px solid var(--line);
+                  background:#fbfcfe;}
+  .fig figcaption b{color:var(--ink);}
+  .fig.tall{display:flex;flex-direction:column;align-items:center;}
+  .fig.tall img{max-height:660px;width:auto;}
+  .gal-label{font-size:.82rem;font-weight:800;letter-spacing:.12em;color:var(--faint);
+             margin:22px 0 -2px;text-transform:uppercase;}
+
+  /* ---------- TABLES ---------- */
+  .tbl{width:100%;border-collapse:collapse;margin:18px 0 6px;font-size:.93rem;
+       border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .tbl th{background:#eef2ff;color:#2440d0;text-align:left;padding:10px 14px;font-weight:700;font-size:.85rem;}
+  .tbl td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top;}
+  .tbl tr:nth-child(even) td{background:#fafbfe;}
+  .tbl .w{font-weight:700;}
+  .tbl .good{color:var(--ok);font-weight:800;}
+  .tbl .bad{color:var(--warn);font-weight:700;}
+  .chip{display:inline-block;font-size:.72rem;font-weight:700;padding:1px 9px;border-radius:20px;}
+  .c-main{background:#e7ecff;color:#2440d0;} .c-done{background:#e4f6ec;color:#0f8a4d;} .c-plan{background:#eef0f3;color:#79818f;}
+
+  /* ---------- X2 specials ---------- */
+  .spot{background:linear-gradient(180deg,#f6f9ff 0%,#ffffff 60%);}
+  .thesis{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent);
+          border-radius:13px;padding:20px 24px;margin-bottom:18px;font-size:1.06rem;line-height:1.8;}
+  .thesis b{color:var(--accent);}
+  .bottleneck{display:flex;align-items:center;gap:18px;background:#fff6f5;border:1px solid #ffd9d5;
+          border-radius:13px;padding:16px 20px;margin-bottom:24px;font-size:1rem;}
+  .bottleneck .big{font-size:2rem;font-weight:800;color:var(--warn);white-space:nowrap;line-height:1;}
+  .sub-h{font-size:1.2rem;font-weight:800;margin:30px 0 6px;padding-bottom:6px;border-bottom:2px solid var(--line);}
+  .sub-h .tag{font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+  .note{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:12px 16px;
+        font-size:.93rem;color:#333b47;margin:14px 0;}
+  .note b{color:var(--ink);}
+  .insights{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0;}
+  .insight{border:1px solid var(--line);border-radius:12px;padding:12px 15px;background:#fff;}
+  .insight .k{font-weight:800;font-size:.95rem;color:var(--accent);}
+  .insight .v{font-size:.9rem;color:var(--muted);}
+
+  footer{margin-top:50px;background:#0d1020;color:#c7cffc;padding:30px 0;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center;}
+  footer a{color:#a9b6ff;}
+  @media (max-width:1000px){
+    .map,.pts,.g2,.g3,.g4,.insights{grid-template-columns:1fr;}
+    .hero h1{font-size:2.1rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="me">万聪 · Cong Wan</span>
+    <a href="#line1">① 世界模型</a>
+    <a href="#line2">② 数据</a>
+    <a href="#line3">③ 后训练 RL</a>
+    <span class="spacer"></span>
+    <a class="now" href="#x2">当前主攻 · X2Action</a>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Research Intern · ByteDance Seed</div>
+    <h1>万聪 <small>Cong Wan</small></h1>
+    <div class="role">西安交大 数学本科 · 计算机硕士 &nbsp;|&nbsp; 阿里达摩院 → 微软亚洲研究院 → 字节 Seed</div>
+    <p class="lead">
+      我的研究围绕三条主线展开，一路从<b>通用视觉生成</b>做到<b>具身智能</b>。
+      核心信念是：让模型不仅能<b>理解和生成世界</b>，更能<b>在世界中推理与行动</b>。
+      三条线最终汇聚到我现在主攻的方向 —— <b>让机器人动作吃下任意丰富的上下文</b>。
+    </p>
+    <div class="map">
+      <div class="box">
+        <div class="t">主线 ①</div>
+        <div class="n">世界模型</div>
+        <div class="d">会生成世界：统一视觉生成 → 持久 3D 世界 → 具身视频合成</div>
+      </div>
+      <div class="box">
+        <div class="t">主线 ②</div>
+        <div class="n">VLM 预训练数据</div>
+        <div class="d">把数据变好：让"数据处理"本身成为一种可学习能力</div>
+      </div>
+      <div class="box">
+        <div class="t">主线 ③</div>
+        <div class="n">后训练强化学习</div>
+        <div class="d">让模型可靠推理：空间 / 时空 / 跨图对比，答案对且过程对</div>
+      </div>
+      <div class="box hi">
+        <div class="t">汇聚 · 当前主攻</div>
+        <div class="n">X2Action</div>
+        <div class="d">AnyContext → Action：把上下文的红利带进机器人动作</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ 主线一 · 世界模型 ══════════════ -->
+<div class="chapter" id="line1">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="no">主线 ①</div>
+      <h2>世界模型 <span class="en">World Models · 会生成世界</span></h2>
+      <div class="sum">
+        这条线回答一个问题：<b>模型能不能建立起对物理世界的生成与想象能力</b>。
+        我从"把所有视觉生成任务统一起来"出发，到"给世界一个显式、持久的 3D 状态"，
+        最后落到"为机器人生成可用于训练的具身交互视频"。
+      </div>
+      <div class="ch-flow">
+        <span class="a">演进</span>&nbsp;·&nbsp;
+        <span class="s">GRID 统一视觉生成 <span class="y">达摩院 2024</span></span><span class="a">→</span>
+        <span class="s">寻光 Edit 业务落地 <span class="y">达摩院 2025</span></span><span class="a">→</span>
+        <span class="s">CanonSwap 高保真一致生成 <span class="y">ICCV 2025</span></span><span class="a">→</span>
+        <span class="s">PERSIST 持久 3D 世界 <span class="y">MSRA 2025</span></span><span class="a">→</span>
+        <span class="s">WorldCanvas 具身视频合成 <span class="y">Seed 2026</span></span>
+      </div>
+    </div>
+
+    <!-- ---- GRID ---- -->
+    <div class="work">
+      <div class="w-head"><span class="num">01</span><h3>GRID · 统一视觉生成</h3><span class="org">阿里达摩院 · 2024</span></div>
+      <div class="w-sub">把"时序生成"重构成"空间网格布局"，用一个模型统一所有视觉生成任务。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">图像 / 视频 / 3D 的生成与编辑各自为战——单任务单模型，知识无法共享、参数冗余。而视频方案要么把图像模型当单帧生成器再外挂时序模块，要么从头训视频 DiT，需要海量数据与超高算力。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">基于 Flux，把视频帧 / 多视图按 <b>m×n 网格</b>排布，时序生成变成标准化的网格空间操作。不改基座架构，把自注意力拆成<b>帧内注意力 + 帧间注意力</b>，文本-图像交叉注意力为所有帧提供统一约束、支持全帧并行生成。训练用 <b>base loss 保外观布局 + flow loss 学时序动作</b>；推理时把视频生成 / 编辑 / 插帧统一成 inpainting 问题。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">单模型统一支撑图像生成、视频生成、图像编辑、多视图生成、图像理解，打破任务边界，且完全复用图像基座的能力与算力。</div></div>
+      </div>
+
+      <div class="gal-label">动机 &amp; 框架</div>
+      <div class="gal g2">
+        <figure class="fig"><img src="assets/grid_motiv.png" alt="motivation" /><figcaption><b>动机</b>：传统范式任务割裂、参数冗余，视频方案代价极高。</figcaption></figure>
+        <figure class="fig"><img src="assets/grid_frame.jpg" alt="framework" /><figcaption><b>GRID 总览</b>：视频 / 多视图 / 关键帧统一成 m×n 网格序列，一个模型全包。</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure class="fig"><img src="assets/grid_repr.jpg" alt="grid repr" /><figcaption><b>网格表征</b>：把时序问题转成空间布局问题。</figcaption></figure>
+        <figure class="fig"><img src="assets/grid_train.png" alt="training" /><figcaption><b>训练策略</b>：双损失约束 + 大规模预训练 / 高质量精调两阶段。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/grid_attn.jpg" alt="attention" /><figcaption><b>注意力扩展</b>：自注意力拆分为帧内 + 帧间，文本交叉注意力统一约束所有帧。</figcaption></figure>
+      </div>
+
+      <div class="gal-label">效果</div>
+      <div class="gal g2">
+        <figure class="fig"><img src="assets/grid_res3.jpg" alt="res3" /><figcaption>多任务生成效果</figcaption></figure>
+        <figure class="fig"><img src="assets/grid_res4.png" alt="res4" /><figcaption>对比实验</figcaption></figure>
+      </div>
+      <div class="gal g3">
+        <figure class="fig tall"><img src="assets/grid_res1.png" alt="res1" /><figcaption>全品类生成结果</figcaption></figure>
+        <figure class="fig tall"><img src="assets/grid_res2.jpg" alt="res2" /><figcaption>多视图 / 时序一致性</figcaption></figure>
+        <figure class="fig"><img src="assets/grid_res5.png" alt="res5" /><figcaption>定量指标</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- ---- 寻光 Edit ---- -->
+    <div class="work">
+      <div class="w-head"><span class="num">02</span><h3>寻光 Edit &amp; LuminaIp · 统一编辑与重光照</h3><span class="org">阿里达摩院 · 业务落地</span></div>
+      <div class="w-sub">GRID 框架的能力复用：不训练独立模型，直接支撑 30+ 编辑任务与重光照场景。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">业务需要通用且稳定的多任务图像编辑；重光照场景普遍存在细节丢失、纹理失真、光照不合理，且光照编辑与属性保持相互冲突。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">编辑侧构建 <b>6M grounding 数据 + 10M 编辑样本</b>及自研水印生成策略；重光照侧提出 LuminaIp，融合 inpainting 的细节保持与 relighting 的光照迁移，构建 LuminaDATA 多源数据集（合成 + 3D 渲染 + 真实采集光照 + 海量 inpainting）。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">支持路人去除、服装上身、去水印、文字重绘等 <b>30+ 编辑任务</b>，落地电商与手机影像；重光照在属性一致性、光照合理性、整体画质上全面优于 IC-Light 等方案。</div></div>
+      </div>
+      <div class="gal g2">
+        <figure class="fig"><img src="assets/edit1.png" alt="edit1" /><figcaption>统一编辑能力总览</figcaption></figure>
+        <figure class="fig"><img src="assets/edit2.png" alt="edit2" /><figcaption>多任务编辑效果</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure class="fig"><img src="assets/edit3.png" alt="edit3" /><figcaption>细节一致性保持</figcaption></figure>
+        <figure class="fig"><img src="assets/edit4.png" alt="edit4" /><figcaption>业务场景适配</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure class="fig"><img src="assets/edit5.png" alt="edit5" /><figcaption>重光照：LuminaIp 效果对比</figcaption></figure>
+        <figure class="fig"><img src="assets/edit6.png" alt="edit6" /><figcaption>光照迁移与属性保持</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- ---- CanonSwap ---- -->
+    <div class="work">
+      <div class="w-head"><span class="num">03</span><h3>CanonSwap · 高保真一致视频生成</h3><span class="org">ICCV 2025</span></div>
+      <div class="w-sub">用"规范空间调制"把身份保持和视角/光照变换解耦开。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">视频生成 / 人脸交换存在三大难题：身份漂移、时序闪烁、细节丢失。传统方法无法同时兼顾身份一致性、时序连续性与纹理保留，结果易出现帧间跳变。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">引入<b>规范空间调制机制</b>，融合图像修复先验，把任务拆解成<b>规范空间特征保持</b> + <b>视角 / 光照变换</b>两个独立步骤，从根源上消除身份漂移与时序闪烁。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">身份一致、时序连续、纹理细节同时保住，显著优于既有方案。</div></div>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/swap_method.png" alt="canonswap method" /><figcaption><b>方法</b>：规范空间特征保持 + 视角/光照变换两步解耦。</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure class="fig dark"><video data-src="assets/swap_qual.mp4" muted loop playsinline controls preload="none"></video><figcaption>与主流方法的定性对比</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/swap_anim.mp4" muted loop playsinline controls preload="none"></video><figcaption>连续帧生成效果</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- ---- PERSIST ---- -->
+    <div class="work">
+      <div class="w-head"><span class="num">04</span><h3>PERSIST · 持久 3D 状态世界模型</h3><span class="org">微软亚洲研究院 · 2025</span></div>
+      <div class="w-sub">给世界模型一个"显式、可演化、持久"的 3D 状态，而不是只靠像素记忆。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">现有交互式世界模型高度依赖像素历史、<b>没有显式 3D 表示</b>：几何一致性只能隐式学，空间记忆受限于短时序窗口，一回头 / 一转向场景就崩坏；无法建模视角外的物体交互；关键帧检索方案在拓展新区域时质量急剧下降。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">在类 Minecraft 体素环境中，把世界建模解耦为<b>3D 环境演化 + 相机预测 + 渲染</b>三个模块，全程维护一个可动态更新的<b>全局持久 latent 3D 状态</b>。自回归流程：单帧初始化 → 以智能体为中心去噪 3D 环境 → 预测相机参数 → 3D 世界投影到相机平面 → 用 3D 信息引导像素去噪出画面。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">可生成<b>数千帧</b>几何与纹理持续一致的交互场景；支持视角外物体交互（碰撞、水淹洞穴等自发演化）；支持<b>生成过程中直接在 3D 空间编辑</b>地形与物体，效果连贯无断层。</div></div>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/persist_method.png" alt="persist method" /><figcaption><b>方法总览</b>：3D 环境演化 + 相机预测 + 渲染三模块，持久 3D 状态贯穿始终。</figcaption></figure>
+      </div>
+      <div class="gal-label">长时序交互 · 几何一致性</div>
+      <div class="gal g2">
+        <figure class="fig dark"><video data-src="assets/persist_walk.webm" muted loop playsinline controls preload="none"></video><figcaption>后退行走：回看场景保持一致，不崩坏</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/persist_meadow.webm" muted loop playsinline controls preload="none"></video><figcaption>抬头 / 低头：视角大幅变化下的稳定性</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure class="fig dark"><video data-src="assets/persist_plains.webm" muted loop playsinline controls preload="none"></video><figcaption>平原长距离探索</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/persist_stacked.webm" muted loop playsinline controls preload="none"></video><figcaption>多序列对比</figcaption></figure>
+      </div>
+      <div class="gal-label">单图 → 3D 体素 + 相机 → 视频</div>
+      <div class="gal g3">
+        <figure class="fig tall"><img src="assets/persist_pipeline.png" alt="pipeline" /><figcaption>输入单图 → 构建 3D 体素与相机 → 生成视频</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/persist_voxel.webm" muted loop playsinline controls preload="none"></video><figcaption>体素初始化与真值对照</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/persist_denoise.webm" muted loop playsinline controls preload="none"></video><figcaption>3D 引导的去噪过程</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- ---- WorldCanvas ---- -->
+    <div class="work">
+      <div class="w-head"><span class="num">05</span><h3>WorldCanvas · 具身视频合成</h3><span class="org">字节 Seed · 2026</span></div>
+      <div class="w-sub">只要"一段顶视图 + 一条轨迹"，就能生成多视角、物理合理的机器人交互视频——为具身预训练造数据。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">已有方法①依赖强几何先验（要标定相机内外参、要完整参考视频），野外场景无法部署；②任务碎片化，全局视角、腕部视角、深度图各做各的，违背 3D 对极几何；③纯像素拟合没有物理正则，长时序交互出现<b>物体穿透、结构形变、交互逻辑断裂</b>。而高质量多模态交互数据的采集成本极高。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">提出统一视觉画布框架，输入极简化为<b>单顶视图视频 + 空间运动轨迹</b>。①语义-运动时空对齐：用 VLM 解析场景布局与物体属性，融合 3D 轨迹与夹爪状态，生成时序对齐的精细 prompt；②<b>网格流匹配统一生成</b>：把全局顶视图、左右腕部视角、深度图整合成 2×2 网格视频，用 DiT + 连续流匹配单步统一生成，隐式学习 3D 对极几何；③<b>物理感知 RL 对齐</b>：设计深度引导的复合奖励（防穿透 + 交互合理性），用 GRPO 优化去噪策略，把物理先验注入生成隐空间。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">生成 49 帧 / 30fps 高保真交互视频，可平滑扩展到 100 帧以上；极端轨迹扰动（反转 / 延伸 / 循环）下任务成功率 <b>87.68%</b>，FVD 降至 179.03、LPIPS 降至 0.2708；实现 <b>10+ 种具身平台零样本跨域生成</b>（RoboTwin 2.0、UMI、人类手部、灵巧手）。</div></div>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/wc_fig1.png" alt="worldcanvas fig1" /><figcaption><b>对比</b>：他人需要强几何先验且任务割裂；我们用极简输入 + 2×2 网格实现统一多视角合成。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/wc_pic2.png" alt="worldcanvas pipeline" /><figcaption><b>完整框架</b>：语义-运动对齐 → 网格流匹配统一生成 → 物理感知 RL 对齐。</figcaption></figure>
+      </div>
+      <div class="gal-label">原轨迹 vs 分布外（OOD）轨迹生成</div>
+      <div class="gal g4">
+        <figure class="fig dark"><video data-src="assets/wc_a1.mp4" muted loop playsinline controls preload="none"></video><figcaption>案例一 · 原轨迹</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/wc_a1_ood.mp4" muted loop playsinline controls preload="none"></video><figcaption>案例一 · <b>OOD 轨迹 → 视频</b></figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/wc_a2.mp4" muted loop playsinline controls preload="none"></video><figcaption>案例二 · 原轨迹</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/wc_a2_ood.mp4" muted loop playsinline controls preload="none"></video><figcaption>案例二 · <b>OOD 轨迹 → 视频</b></figcaption></figure>
+      </div>
+      <div class="gal-label">跨本体零样本生成</div>
+      <div class="gal g2">
+        <figure class="fig dark"><video data-src="assets/wc_dex.mp4" muted loop playsinline controls preload="none"></video><figcaption>灵巧手腕部视角生成</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/wc_hand.mp4" muted loop playsinline controls preload="none"></video><figcaption>纯人类手部腕部视角生成</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 主线二 · 数据 ══════════════ -->
+<div class="chapter" id="line2">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="no">主线 ②</div>
+      <h2>VLM 预训练数据 <span class="en">Data · 把数据变好</span></h2>
+      <div class="sum">
+        模型能力的上限最终由数据决定。这条线的核心主张是：
+        <b>把"数据处理"从人工流水线，升级成一种可学习、可优化的模型能力</b>。
+      </div>
+    </div>
+
+    <div class="work">
+      <div class="w-head"><span class="num">06</span><h3>DataClaw · Agentic 多模态数据定制</h3><span class="org">字节 Seed · 2026</span></div>
+      <div class="w-sub">让模型按下游意图，主动把高熵的原始多模态流"精炼"成结构化训练数据。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">多模态基础模型的核心瓶颈是<b>高质量训练数据稀缺</b>。物理 / 数字世界产生的原始流（教程视频、具身轨迹、GUI 操作日志）<b>数据熵极高</b>——噪声大、冗余高、结构弱。现有被动标注范式靠启发式规则或通用 VLM，成本高、效果差，挖不出数据里的深层过程逻辑。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">提出<b>智能体化数据定制</b>。数据构建走两阶段自动化流程：①轻量领域专家先抽取<b>确定性事实锚点</b>（目标状态、时间边界、OCR、交互事件），解决幻觉与长序列 grounding；②强 VLM 基于锚点做长程逻辑链推理，合成结构化监督数据。训练走 <b>SFT → 规则驱动 GRPO</b>：用确定性规则奖励替代神经奖励模型，优化格式合规、时空锚点一致、推理效率三项。部署支持统一版与领域专家版两种架构。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">数据质量在 Schema 完整性、语义准确性、序列一致性上<b>超越开源 SOTA</b>，语义比肩 GPT-4o / Gemini 而序列一致性更优；同等数据量下，用它定制的数据训练模型，在 <b>GUI 导航、动作视频生成、时空 VQA</b> 上与 Gemini 标注数据持平、部分端到端指标更优，<b>成本大幅下降</b>。覆盖日常生活、教育、具身智能、世界模型 / AIGC、GUI 智能体五大领域。</div></div>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/dc_overview.png" alt="dataclaw overview" /><figcaption><b>框架总览</b>：事实锚点提取 + 语义合成的数据流水线，配合 SFT + 规则 GRPO 的训练范式。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/dc_res1.png" alt="dataclaw quality" /><figcaption><b>数据质量评估</b>：Schema 完整性 / 语义准确性 / 序列一致性对比。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/dc_res2.png" alt="dataclaw downstream" /><figcaption><b>下游任务提升</b>：同等数据量下三大任务的端到端效果。</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 主线三 · 后训练 RL ══════════════ -->
+<div class="chapter" id="line3">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="no">主线 ③</div>
+      <h2>后训练强化学习 <span class="en">Post-training RL · 让模型可靠地推理</span></h2>
+      <div class="sum">
+        这条线关注一件事：<b>只优化"答案对不对"是不够的</b>。
+        我用结构化、可验证的过程奖励，去约束模型的推理过程本身——
+        依次解决<b>空间推理</b>、<b>时空运动推理</b>、<b>跨图对比推理</b>三类具身智能刚需的能力。
+      </div>
+      <div class="ch-flow">
+        <span class="a">三类能力</span>&nbsp;·&nbsp;
+        <span class="s">ProSR：空间推理的过程可靠性</span><span class="a">→</span>
+        <span class="s">ReMoT：细粒度时空运动推理</span><span class="a">→</span>
+        <span class="s">CoRe：跨图细粒度对比推理</span>
+      </div>
+    </div>
+
+    <!-- ProSR -->
+    <div class="work">
+      <div class="w-head"><span class="num">07</span><h3>ProSR · 过程塑造的空间推理</h3><span class="org">空间推理</span></div>
+      <div class="w-sub">从"答案正确"升级为"答案正确 + 过程可靠"。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">现有范式只以最终答案正确性为目标。我诊断 GRPO 训练过程发现两种典型退化：①<b>伪视觉锚定</b>——把图片抽掉，模型仍能生成几乎一样的推理轨迹和答案，说明它靠的是语言先验和数据集偏差而非视觉证据；②<b>尾部不稳定</b>——推理后期不确定性异常回升，轨迹震荡发散。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">把过程缺陷变成可优化的约束。先构建<b>强视觉锚定的空间 CoT 数据</b>（规则过滤：答案正确、长度适中、无重复回溯、空间锚点充足），22K 做 SFT；再在 GRPO 上加两项过程级惩罚：<b>反事实不变性惩罚</b>（同步采样原图与空白图轨迹，惩罚两者熵轨迹过度相似，逼模型真看图）与<b>尾部漂移惩罚</b>（约束后期不确定性相对中期的异常回升），45K 样本上优化。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">5 个复杂空间推理基准平均准确率 <b>69.3%</b>，超当前最优开源模型 3.7 个点。过程指标全面改善：空白图准确率 0.535 → 0.321，后期回升率 0.179 → 0.002，推理尾部几乎无震荡。</div></div>
+      </div>
+      <div class="gal g2">
+        <figure class="fig"><img src="assets/prosr_motiv.png" alt="prosr motivation" /><figcaption><b>问题诊断</b>：伪视觉锚定与尾部不稳定两种过程退化。</figcaption></figure>
+        <figure class="fig"><img src="assets/prosr_method.png" alt="prosr method" /><figcaption><b>方法</b>：双过程惩罚 + 两阶段训练。</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure class="fig tall"><img src="assets/prosr_main.png" alt="prosr results" /><figcaption><b>主结果</b>：5 个空间推理基准全面领先。</figcaption></figure>
+        <figure class="fig"><img src="assets/prosr_proc.png" alt="prosr process" /><figcaption><b>过程可靠性</b>：四项过程指标显著下降，退化被有效抑制。</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- ReMoT -->
+    <div class="work">
+      <div class="w-head"><span class="num">08</span><h3>ReMoT · 细粒度时空运动推理</h3><span class="org">CVPR 2026 · Highlight</span></div>
+      <div class="w-sub">用"运动对比三元组"逼模型学会分辨相机在动还是物体在动。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">时空一致性推理是具身操作、自动驾驶的刚需，但主流 VLM 有根本性缺陷：只擅长静态视觉语义对齐，频繁<b>混淆相机自转与真实物体运动</b>、误判机械爪开合状态、颠倒运动方向。既有方案都是零散修补；而传统训练依赖静态图文对、缺乏细粒度运动监督，纯 SFT 容易训练崩溃、推理冗长、逻辑自相矛盾。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">从数据与训练双维度破解。①基于视频结构化元注释（相机 SE(3) 位姿、机器人遥测），用运动估计、三元组构建、VQA 生成三个专家模块，自动生成 <b>16.5K 运动对比三元组</b>——正例与锚点具备真实运动属性，<b>负例视觉高度相似但运动属性相反</b>，强制模型学细粒度判别而非浅层表象。②用<b>准确率 + 逻辑一致性 + 长度正则</b>的复合奖励做 GRPO，并创新采用 <b>SFT 与 GRPO 交替训练</b>，解决单一 SFT 的能力崩溃。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">自建基准整体准确率相对基线 <b>+25.1 个点</b>；在 VLM2、VSI、MMSI 三大权威基准刷新最优；<b>4B 小模型超越 7.5 倍参数的 30B 模型</b>；BLINK / MMStar / MMMU 等通用基准无灾难性遗忘。</div></div>
+      </div>
+      <div class="gal g2">
+        <figure class="fig"><img src="assets/remot_motiv.png" alt="remot motivation" /><figcaption><b>问题</b>：主流 VLM 在跨帧运动判别上的典型错误。</figcaption></figure>
+        <figure class="fig"><img src="assets/remot_method.png" alt="remot method" /><figcaption><b>方法</b>：多专家构建运动对比三元组 + GRPO/SFT 交替训练。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/remot_res1.png" alt="remot results" /><figcaption><b>时空推理基准</b>：4B 模型超越数倍参数量的对手。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/remot_res2.png" alt="remot results2" /><figcaption><b>通用能力</b>：增强时空推理的同时无灾难性遗忘。</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- CoRe -->
+    <div class="work">
+      <div class="w-head"><span class="num">09</span><h3>CoRe · 跨图细粒度对比推理</h3><span class="org">ACM MM 2026</span></div>
+      <div class="w-sub">监督"可验证的中间结构"，而不是只看最终答案。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">很多现实任务需要跨多张图比较<b>数量、深度、距离、空间关系</b>，但即便是最强的 VLM 在这类细粒度对比上也系统性出错。更关键的是：只优化答案时，有 <b>17.1%</b> 答对的样本其实伴随着事实错误的推理链——答案对了，过程是蒙的。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">①从结构化视觉元数据出发，用多专家协同流水线自动构建 <b>CoRe-20K</b> 三元组训练集（覆盖计数、深度、距离、空间关系），标签可验证、无需人工标注；②提出 <b>TriSR</b> 结构化奖励，在 GRPO 下联合监督<b>属性 grounding、判断对齐、三元组全局一致性</b>；③构建 CoRe-Bench 专用基准。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">在 CoRe-Bench 上大幅超越现有 VLM，部分准确率较最强基线 <b>+28.2 个点</b>，同时在标准多模态基准上保持竞争力。核心结论：<b>利用可验证的中间结构做监督，比只看结果有效得多</b>。</div></div>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/core_fail.png" alt="core failures" /><figcaption><b>问题</b>：计数 / 深度 / 距离 / 关系四类任务上，主流大模型的系统性失败。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/core_frame.png" alt="core framework" /><figcaption><b>框架</b>：多专家自动构建三元组数据 + TriSR 结构化奖励引导的 GRPO 训练。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/core_res.png" alt="core results" /><figcaption><b>结果</b>：CoRe-Bench 上显著领先。</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 当前主攻 · X2Action ══════════════ -->
+<div class="chapter spot" id="x2">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="no">汇聚 · 当前在 Seed 主攻</div>
+      <h2>X2Action <span class="en">AnyContext → Action</span></h2>
+      <div class="sum">让机器人的动作，能够 condition 在<b>任意模态、任意长度、任意来源</b>的上下文上。</div>
+    </div>
+
+    <div class="thesis">
+      <b>核心判断：智能的上限，取决于模型能吸收多少上下文。</b><br/>
+      <b>语言侧</b>——从短 prompt 走向长上下文 + In-Context Learning，LLM 的能力随上下文丰富度不断涌现；
+      <b>视频生成侧</b>——标注越详细，可控生成越贴意图；
+      <b>而机器人 VLA</b> 还停在"一句短指令 → 动作"，意图带宽被压进十几个字，这正是具身智能的瓶颈。<br/>
+      X2Action 就是<b>把机器人接入同一条铁律</b>：一端对齐 LLM 的长上下文 / ICL（把上下文 X 喂进来），一端对齐可控视频生成（让模型自己生成 X）。
+    </div>
+
+    <div class="bottleneck">
+      <div class="big">40.9%</div>
+      <div>起点问题：只给一句短指令"把倒下的调料瓶扶正"（约 15 字），成功率只有 40.9%。
+      <b>抓哪里、朝哪个方向转、抓多深、放到哪</b>——这些"怎么做"的信息全被语言压没了。<b>补上这段信息，就是补上一段上下文 X。</b></div>
+    </div>
+
+    <!-- ===== Part ① ===== -->
+    <div class="sub-h">Part ① · X 输入：外力在动作前"喂"上下文<span class="chip c-main tag">对齐 LLM 长上下文 / ICL</span></div>
+
+    <!-- 1.1 -->
+    <div class="work" style="margin-top:22px">
+      <div class="w-head"><span class="num">1.1</span><h3>文字 X · Long Instruction</h3></div>
+      <div class="w-sub">同一个 baseline，只换指令——先验证"补上下文"这条路走不走得通。</div>
+      <table class="tbl">
+        <tr><th>指令类型</th><th>平均字数</th><th>ID 成功率</th><th>说明</th></tr>
+        <tr><td>短指令</td><td>~15</td><td class="bad">40.9%</td><td>起点，信息被压缩殆尽</td></tr>
+        <tr><td class="w">长指令（全量环境 + 步骤）</td><td>~1539</td><td class="good">54.5%</td><td>把场景与操作步骤全部写清</td></tr>
+        <tr><td class="w">定语扩写（只说清物体）</td><td>~78</td><td class="good">54.5%</td><td><b>仅 78 字即达到超长文效果</b></td></tr>
+        <tr><td>checklist（子步骤 + 思考）</td><td>~522</td><td>51.5%</td><td>结构化子任务与进度</td></tr>
+        <tr><td class="w">+ VQA 联合训练</td><td>—</td><td class="good">最高 59%</td><td>叠加理解类数据进一步涨点</td></tr>
+      </table>
+      <div class="insights">
+        <div class="insight"><div class="k">涨点靠"消歧"不靠"长度"</div><div class="v">78 字 ≈ 1539 字，关键是把"指哪个物体、怎么操作"说到无歧义。</div></div>
+        <div class="insight"><div class="k">人写 &gt; 机写</div><div class="v">机器标注的幻觉会抵消掉信息量带来的收益。</div></div>
+        <div class="insight"><div class="k">有效维度</div><div class="v">左右臂分工 + 有序子步骤 + 空间/抓取/朝向等"怎么做"细节。</div></div>
+      </div>
+      <div class="note"><b>文字路线的硬伤：</b>约 78 字即饱和；且推理时长指令难以现取（现场用大模型生成会带来幻觉与延迟）。<b>→ 于是转向非文字的上下文。</b></div>
+    </div>
+
+    <!-- 1.2 VideoICL -->
+    <div class="work">
+      <div class="w-head"><span class="num">1.2</span><h3>视频 X · VideoICL</h3><span class="org">当前主攻</span></div>
+      <div class="w-sub">方向、顺序、抓取部位、目标物这些"怎么做"，视频天然就编码好了。</div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">语言表达不了的空间与操作细节（指哪个、从哪抓、朝哪转、先做哪个），在视觉参考里是天然存在的。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">把一段参考演示视频作为上下文喂给模型，让它照着做。训练范式采用<b>交错 episode</b>——同一任务的<b>不同</b> episode 互为演示，避免模型用"自己的未来帧"作弊导致过拟合。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">四类训练中<b>完全未见</b>的迁移能力被激发；对照实验证明模型是<b>真在看视频</b>，而非碰巧。</div></div>
+      </div>
+
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/x2_pointvla.png" alt="visual grounding" /><figcaption><b>为什么需要视觉上下文</b>：场景里有大量相似物体时，再详尽的文字描述也会有歧义；视觉提示则能精确指认。</figcaption></figure>
+      </div>
+
+      <table class="tbl">
+        <tr><th>零样本迁移维度</th><th>纯语言</th><th>给视频上下文</th></tr>
+        <tr><td class="w">方向（向下拉文具袋）</td><td class="bad">方向错</td><td class="good">✓ 正确</td></tr>
+        <tr><td class="w">顺序（梨 → 菠萝 → 苹果 入篮）</td><td class="bad">顺序错</td><td class="good">✓ 正确</td></tr>
+        <tr><td class="w">affordance（抓杯子把手）</td><td class="bad">抓杯身</td><td class="good">✓ 抓把手</td></tr>
+        <tr><td class="w">目标物（擦指定图形）</td><td class="bad">擦错</td><td class="good">✓ 擦对</td></tr>
+      </table>
+
+      <div class="gal-label">上下文输入 &amp; 迁移效果</div>
+      <div class="gal g2">
+        <figure class="fig dark"><video data-src="assets/x2_icl_input.mp4" muted loop playsinline controls preload="none"></video><figcaption><b>上下文长什么样</b>：第三人称演示 + 机器人自身观测</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/x2_direction.mp4" muted loop playsinline controls preload="none"></video><figcaption><b>方向迁移</b>：演示 / 看视频→成功 / 纯语言→失败</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure class="fig dark"><video data-src="assets/x2_order.mp4" muted loop playsinline controls preload="none"></video><figcaption><b>顺序迁移</b>：人类演示 / 机器人模仿出同样的顺序</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/x2_seevideo.mp4" muted loop playsinline controls preload="none"></video><figcaption><b>控制变量</b>：给视频→动作有意义；不给→乱动</figcaption></figure>
+      </div>
+
+      <div class="note"><b>最大的坑 = 训推不一致（掉点主因）。</b>
+        ①<b>帧数与间隔</b>：训练固定 4–9 帧，推理时序列更长、间隔更大；
+        ②<b>物料与环境</b>：训练用 oracle 演示，推理现场条件不同；
+        ③<b>视角对齐</b>：做 crop 对齐时，头部相机位移过大导致<b>手臂直接从画面中消失</b>，直接掉 7 个点。
+        这条是我目前主攻的工程重点。
+      </div>
+      <div class="gal g2">
+        <figure class="fig dark"><video data-src="assets/x2_crop_fail.mp4" muted loop playsinline controls preload="none"></video><figcaption><b>反例</b>：视角裁切导致手臂消失</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/x2_test_cup.mp4" muted loop playsinline controls preload="none"></video><figcaption><b>提测（杯子放杯垫）</b>：成功 / 失败对照</figcaption></figure>
+      </div>
+
+      <div class="note"><b>最新进展：</b>高质量 ICL benchmark 采集完成（白背景 + 屏风标准化），两个本体各 2200 条，新链路自测正常。</div>
+      <div class="gal g1">
+        <figure class="fig dark"><video data-src="assets/x2_collect.mp4" muted loop playsinline controls preload="none"></video><figcaption><b>标准化采集案例</b>：物块右移 / 空中画圆 / 两木块推中间</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- 1.3 -->
+    <div class="work">
+      <div class="w-head"><span class="num">1.3</span><h3>空间 X · Grounding-CoT</h3><span class="org">规划中</span></div>
+      <div class="w-sub">让模型先输出 mask / affordance / bbox 作为空间上下文，再据此动作——通用抓放的下一级阶梯。</div>
+    </div>
+
+    <!-- ===== Part ② ===== -->
+    <div class="sub-h">Part ② · X 输出：模型自己"想象"出上下文<span class="chip c-done tag">对齐可控视频生成 · 天然训推一致</span></div>
+    <div class="note" style="margin-top:16px">不依赖外部演示：模型<b>先想象</b>一张"目标该长什么样"的图（这就是 X），再据此动作。<b>内生、天然训推一致</b>，且直接对齐可控视频生成这条成熟范式。</div>
+
+    <div class="work" style="margin-top:22px">
+      <div class="w-head"><span class="num">2.1</span><h3>Bagel2-VLA · 一步生成"模糊目标图"</h3><span class="org">已打通</span></div>
+      <div class="pts">
+        <div class="pt p"><div class="l">问题</div><div class="x">外部演示不总是有；而且"给什么上下文"依赖人工准备，训练与推理容易不一致。</div></div>
+        <div class="pt a"><div class="l">做法</div><div class="x">走 world model 路线：在当前观测上<b>一步预测出一张（模糊的）未来目标图</b>，再把它回喂给动作头当作上下文条件。推理时只走"一步"生成 goal image，动作即条件在这张图上。</div></div>
+        <div class="pt h"><div class="l">亮点</div><div class="x">仅一步去噪出的<b>模糊</b>目标图就已经足够当上下文，效果比生成高清图好一倍多，in-domain 抓取明显变强。</div></div>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/x2_bagel.png" alt="bagel2 overview" /><figcaption><b>训练与推理链路</b>：训练端同时学文本 / 图像 / 动作；推理端一步生成 goal image 作为动作条件。</figcaption></figure>
+      </div>
+      <div class="gal g1">
+        <figure class="fig"><img src="assets/x2_goal.png" alt="goal image" /><figcaption><b>左</b>：当前帧 &nbsp;·&nbsp; <b>中</b>：模型一步生成的模糊目标图 &nbsp;·&nbsp; <b>右</b>：真实未来帧。模糊的目标已经足够指导动作。</figcaption></figure>
+      </div>
+      <table class="tbl">
+        <tr><th>预测目标</th><th>成功率</th><th>说明</th></tr>
+        <tr><td class="w">pure_noise（预测 delta 图，一步去噪直接 cache）</td><td class="good">27%</td><td>✓ 最好，in-domain 抓取明显变强</td></tr>
+        <tr><td>VLA baseline</td><td>22%</td><td>对照组</td></tr>
+        <tr><td>dfeat（预测未来 feature）</td><td>22%</td><td>无明显收益</td></tr>
+      </table>
+      <div class="note">当前主要挑战 = <b>过拟合</b>（小样本训完后原始基座的通用能力会退化），这是下一步要攻的点。</div>
+      <div class="gal g1">
+        <figure class="fig dark"><video data-src="assets/x2_bagel_src.mp4" muted loop playsinline controls preload="none"></video><figcaption>源第一人称视频：双手传递勺子</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="work">
+      <div class="w-head"><span class="num">2.2</span><h3>未来帧 / IDM · World Model</h3><span class="org">规划中</span></div>
+      <div class="w-sub">预测未来帧序列，或从视频反推动作（IDM）——"模型自产上下文"的自然延伸。</div>
+      <div class="gal g2">
+        <figure class="fig dark"><video data-src="assets/x2_zeroshot1.mp4" muted loop playsinline controls preload="none"></video><figcaption>零样本具身视频生成 · 案例一</figcaption></figure>
+        <figure class="fig dark"><video data-src="assets/x2_zeroshot2.mp4" muted loop playsinline controls preload="none"></video><figcaption>零样本具身视频生成 · 案例二</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- 底座 + 全局表 -->
+    <div class="sub-h">共同底座 &amp; 一张表看全局</div>
+    <div class="insights" style="margin-top:16px">
+      <div class="insight"><div class="k">统一动作表示</div><div class="v">37 维 chunk（双臂 eef + 夹爪 + 关节 + 胸 + 底盘），TCP 系，兼容多种本体。</div></div>
+      <div class="insight"><div class="k">统一数据链路</div><div class="v">统一打包 → 全量 shuffle → 统一模板 → 统一部署，shuffle 一项即带来明显收益。</div></div>
+      <div class="insight"><div class="k">统一评测</div><div class="v">统一任务集 + AA-test，保证不同路线的结果可横向比较。</div></div>
+    </div>
+
+    <table class="tbl">
+      <tr><th>上下文从哪来</th><th>形态</th><th>工作</th><th>关键证据</th><th>状态</th></tr>
+      <tr><td>（起点）</td><td>短语言</td><td class="w">baseline</td><td>成功率 40.9%——天花板</td><td><span class="chip c-plan">起点</span></td></tr>
+      <tr><td>① 输入</td><td>文字</td><td class="w">Long Instruction</td><td>40.9% → 54.5%；定语扩写 ≈ 超长文；人写 &gt; 机写</td><td><span class="chip c-done">做扎实中</span></td></tr>
+      <tr><td>① 输入</td><td>视频</td><td class="w">VideoICL</td><td>四类零样本迁移，联合训练激发；两本体各 2200 条基准</td><td><span class="chip c-main">主攻</span></td></tr>
+      <tr><td>① 输入</td><td>空间</td><td class="w">Grounding-CoT</td><td>先出 mask / affordance / bbox 再动作</td><td><span class="chip c-plan">规划中</span></td></tr>
+      <tr><td>② 输出</td><td>目标图</td><td class="w">Bagel2-VLA</td><td>pure_noise 27% &gt; baseline 22%；全链路打通</td><td><span class="chip c-done">已打通</span></td></tr>
+      <tr><td>② 输出</td><td>未来帧 / 动作</td><td class="w">World Model / IDM</td><td>预测未来帧序列、从视频反推动作</td><td><span class="chip c-plan">规划中</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div style="color:#fff;font-weight:700;font-size:1.05rem;">万聪 · Cong Wan</div>
+      <div style="color:#8b94a1;font-size:.9rem;margin-top:2px;">世界模型 · VLM 预训练数据 · 后训练强化学习 · 具身智能</div>
+    </div>
+    <div style="font-size:.9rem;">
+      <a href="https://vancyland.github.io/acad-homepage.github.io/">个人主页</a> &nbsp;·&nbsp;
+      <a href="https://scholar.google.com/citations?user=zFi57pEAAAAJ&hl=en">Google Scholar</a> &nbsp;·&nbsp;
+      wancong[at]stu.xjtu.edu.cn
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var vids = document.querySelectorAll('video[data-src]');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if(e.isIntersecting){
+        if(!v.src){ v.src = v.dataset.src; }
+        var p = v.play(); if(p && p.catch){ p.catch(function(){}); }
+      } else if(!v.paused){ v.pause(); }
+    });
+  }, {rootMargin:'300px 0px'});
+  vids.forEach(function(v){ io.observe(v); });
+})();
+</script>
+</body>
+</html>
